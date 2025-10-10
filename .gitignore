@@ -68,6 +68,7 @@ config/database.yml
 !ONEPANEL-INSTALL.md
 !WORDPRESS-UPLOAD-GUIDE.md
 !GITHUB-COLLABORATION-GUIDE.md
+!CURSOR-GITHUB-QUICK-START.md
 
 # 静态网站文件（如果不需要版本控制）
 static-site/
