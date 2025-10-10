@@ -1,0 +1,50 @@
+{
+  "name": "红人汉克手册",
+  "version": "1.0.0",
+  "type": "wordpress-theme",
+  "description": "现代简洁的知识库 WordPress 主题",
+  "author": "Hank",
+  "requirements": {
+    "php": ">=7.4",
+    "mysql": ">=5.6",
+    "wordpress": ">=5.0",
+    "webserver": "Apache/Nginx"
+  },
+  "features": [
+    "响应式设计",
+    "自定义文章类型",
+    "主题定制器支持",
+    "小工具区域",
+    "导航菜单",
+    "AJAX 加载更多",
+    "邮件订阅表单"
+  ],
+  "installation": {
+    "steps": [
+      "上传主题文件夹到 /wp-content/themes/ 目录",
+      "在 WordPress 后台启用主题",
+      "配置主题设置（外观 > 自定义）",
+      "设置导航菜单",
+      "添加资源和文章内容"
+    ]
+  },
+  "recommended_plugins": [
+    "Contact Form 7",
+    "Yoast SEO",
+    "Akismet",
+    "WP Super Cache",
+    "Mailchimp for WordPress"
+  ],
+  "performance": {
+    "cache": true,
+    "minify": true,
+    "lazy_load": true,
+    "gzip": true
+  },
+  "security": {
+    "xss_protection": true,
+    "clickjacking_protection": true,
+    "mime_sniffing_protection": true
+  }
+}
+
