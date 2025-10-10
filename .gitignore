@@ -1,0 +1,73 @@
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+
+# WordPress 特定
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# 依赖文件
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+
+# 敏感信息
+.env
+.env.local
+.env.production
+config/database.yml
+*.pem
+*.key
+
+# 备份文件
+*.bak
+*.backup
+*.sql
+
+# 压缩文件（除了主题包）
+*.zip
+*.tar.gz
+*.rar
+!红人汉克手册主题.zip
+
+# 图片文件（除了必要的）
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+!screenshot.png
+!红色logo.png
+
+# 文档文件（可选）
+*.md
+!README.md
+!CHANGELOG.md
+!ONEPANEL-INSTALL.md
+!WORDPRESS-UPLOAD-GUIDE.md
+!GITHUB-COLLABORATION-GUIDE.md
+
+# 静态网站文件（如果不需要版本控制）
+static-site/
