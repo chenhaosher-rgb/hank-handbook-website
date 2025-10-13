@@ -1,8 +1,23 @@
+/*
+Theme Name: 红人汉克手册
+Theme URI: https://yourwebsite.com
+Author: Hank
+Author URI: https://yourwebsite.com
+Description: 一个现代简洁的知识库主题，适用于个人品牌和内容创作者
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hank-handbook
+Tags: blog, custom-menu, featured-images, threaded-comments, translation-ready, custom-logo
+*/
+
 /* ==========================================================================
-   红人汉克手册 - 静态网站样式
+   CSS Reset & Base Styles
    ========================================================================== */
 
-/* CSS Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,6 +33,7 @@
     --color-border: #e0e0e0;
     --color-red: #dc2626;
     --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    --font-secondary: Georgia, 'Times New Roman', serif;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
@@ -26,10 +42,6 @@
     --max-width: 1200px;
     --border-radius: 8px;
     --transition: all 0.3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -64,18 +76,38 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-sm);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
 
 p {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Layout */
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
 .container {
     max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.wide-container {
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
 }
@@ -84,13 +116,10 @@ p {
     padding: var(--spacing-xl) 0;
 }
 
-.section-description {
-    text-align: center;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-lg);
-}
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 
-/* Header & Navigation */
 .site-header {
     background-color: var(--color-secondary);
     padding: var(--spacing-md) 0;
@@ -98,8 +127,6 @@ p {
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95);
 }
 
 .header-inner {
@@ -145,12 +172,6 @@ p {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: var(--spacing-xs) var(--spacing-sm);
-    transition: var(--transition);
-}
-
-.main-navigation a:hover {
-    background-color: var(--color-accent);
-    border-radius: 4px;
 }
 
 .mobile-menu-toggle {
@@ -159,10 +180,12 @@ p {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.5rem;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
 .hero-section {
     text-align: center;
     padding: var(--spacing-xl) 0;
@@ -192,34 +215,10 @@ p {
     margin: 0 auto var(--spacing-md);
 }
 
-/* Contact Button */
-.contact-button-container {
-    text-align: center;
-    margin: var(--spacing-md) auto;
-}
+/* ==========================================================================
+   Email Signup Form
+   ========================================================================== */
 
-.contact-btn {
-    display: inline-block;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition);
-    white-space: nowrap;
-}
-
-.contact-btn:hover {
-    opacity: 0.85;
-    transform: translateY(-2px);
-    color: var(--color-secondary);
-}
-
-/* Email Signup Form (保留用于其他地方) */
 .email-signup-form {
     display: flex;
     gap: var(--spacing-sm);
@@ -234,7 +233,6 @@ p {
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-family: var(--font-primary);
-    transition: var(--transition);
 }
 
 .email-signup-form input[type="email"]:focus {
@@ -260,7 +258,10 @@ p {
     transform: translateY(-2px);
 }
 
-/* Resources Section */
+/* ==========================================================================
+   Resources Grid
+   ========================================================================== */
+
 .resources-section {
     background-color: var(--color-secondary);
 }
@@ -294,7 +295,6 @@ p {
     border-radius: var(--border-radius);
     transition: var(--transition);
     border: 1px solid var(--color-border);
-    position: relative;
 }
 
 .resource-card:hover {
@@ -329,7 +329,7 @@ p {
     margin-bottom: var(--spacing-md);
 }
 
-.btn {
+.resource-card .btn {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-md);
     background-color: var(--color-primary);
@@ -337,15 +337,16 @@ p {
     border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 0.95rem;
-    transition: var(--transition);
 }
 
-.btn:hover {
+.resource-card .btn:hover {
     opacity: 0.85;
-    transform: translateY(-2px);
 }
 
-/* Blog Section */
+/* ==========================================================================
+   Blog Posts
+   ========================================================================== */
+
 .blog-section {
     background-color: var(--color-accent);
 }
@@ -378,11 +379,7 @@ p {
     margin-bottom: var(--spacing-sm);
 }
 
-.post-card h3 a {
-    color: var(--color-primary);
-}
-
-.post-excerpt {
+.post-card .post-excerpt {
     color: var(--color-text-light);
     margin-bottom: var(--spacing-sm);
     line-height: 1.7;
@@ -402,7 +399,6 @@ p {
     gap: var(--spacing-xs);
     font-weight: 600;
     color: var(--color-red);
-    transition: var(--transition);
 }
 
 .read-more:hover {
@@ -428,7 +424,10 @@ p {
     transform: translateY(-2px);
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 .site-footer {
     background-color: var(--color-primary);
     color: var(--color-secondary);
@@ -456,14 +455,6 @@ p {
     color: var(--color-secondary);
 }
 
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section li {
-    margin-bottom: var(--spacing-xs);
-}
-
 .social-links {
     display: flex;
     gap: var(--spacing-sm);
@@ -479,8 +470,6 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: var(--transition);
-    font-size: 0.9rem;
-    font-weight: 600;
 }
 
 .social-links a:hover {
@@ -495,7 +484,63 @@ p {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Responsive Design */
+/* ==========================================================================
+   Single Post
+   ========================================================================== */
+
+.single-post-header {
+    text-align: center;
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    background-color: var(--color-accent);
+}
+
+.single-post-header h1 {
+    font-size: 3rem;
+    max-width: 900px;
+    margin: 0 auto var(--spacing-sm);
+}
+
+.single-post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.single-post-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.single-post-content h2,
+.single-post-content h3,
+.single-post-content h4 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.single-post-content ul,
+.single-post-content ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+}
+
+.single-post-content li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.single-post-content blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    font-style: italic;
+    color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
@@ -510,7 +555,6 @@ p {
         background-color: var(--color-secondary);
         border-top: 1px solid var(--color-border);
         padding: var(--spacing-md);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .main-navigation.active {
@@ -520,10 +564,6 @@ p {
     .main-navigation ul {
         flex-direction: column;
         gap: var(--spacing-sm);
-    }
-
-    .main-navigation a {
-        display: block;
     }
 
     .hero-title {
@@ -540,6 +580,10 @@ p {
 
     .resources-grid {
         grid-template-columns: 1fr;
+    }
+
+    .single-post-header h1 {
+        font-size: 2rem;
     }
 
     .section-title {
@@ -563,53 +607,68 @@ p {
     }
 }
 
-/* Utility Classes */
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
 .text-center {
     text-align: center;
 }
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
 
 .hidden {
     display: none;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
-.fade-in {
-    animation: fadeIn 0.6s ease-out;
-}
 
-/* Success Message */
-.success-message {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
-    margin-top: var(--spacing-sm);
+
+/* Contact Button */
+.contact-button-container {
     text-align: center;
+    margin: var(--spacing-md) auto;
 }
 
-.error-message {
-    background-color: #f8d7da;
-    border: 1px solid var(--color-red);
-    color: #721c24;
-    padding: var(--spacing-sm) var(--spacing-md);
+.contact-btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
     border-radius: var(--border-radius);
-    margin-top: var(--spacing-sm);
-    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
 }
 
-
+.contact-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+    color: var(--color-secondary);
+}
 
 /* Modal Styles */
 .modal {
@@ -949,5 +1008,298 @@ p {
     
     .header-contact {
         display: none;
+    }
+}
+
+
+/* 增强版搜索结果样式 */
+.solution-item {
+    background: var(--color-secondary);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.solution-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.solution-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-md);
+}
+
+.solution-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: flex-end;
+}
+
+.difficulty-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.difficulty-初级 {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.difficulty-中级 {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.difficulty-高级 {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.time-estimate {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.solution-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.tag {
+    background: var(--color-border);
+    color: var(--color-text);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.resource-item {
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.resource-info {
+    flex: 1;
+}
+
+.resource-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.resource-description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+}
+
+.resource-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.resource-type {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 2px var(--spacing-xs);
+    border-radius: 10px;
+    font-size: 0.7rem;
+}
+
+.resource-size {
+    color: var(--color-text-light);
+    font-size: 0.8rem;
+}
+
+.resource-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.preview-btn, .download-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.preview-btn {
+    background: var(--color-border);
+    color: var(--color-text);
+}
+
+.preview-btn:hover {
+    background: #e5e7eb;
+}
+
+.download-btn {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.download-btn:hover {
+    background: #991b1b;
+}
+
+.success-cases {
+    background: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-md);
+}
+
+.success-cases h5 {
+    color: #0369a1;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.success-cases ul {
+    margin: 0;
+    padding-left: var(--spacing-md);
+}
+
+.success-cases li {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.related-topics {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.related-topics h5 {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.related-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.related-tag {
+    background: var(--color-secondary);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.related-tag:hover {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+/* 下载通知样式 */
+.download-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--color-secondary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.download-notification.show {
+    transform: translateX(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.notification-icon {
+    font-size: 1.2rem;
+}
+
+.notification-text {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .solution-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .solution-meta {
+        align-items: flex-start;
+        flex-direction: row;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .resource-actions {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .download-notification {
+        right: 10px;
+        left: 10px;
+        transform: translateY(-100%);
+    }
+    
+    .download-notification.show {
+        transform: translateY(0);
     }
 }
