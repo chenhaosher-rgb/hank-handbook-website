@@ -234,6 +234,32 @@
         }
     }
 
+    // 联系我弹窗功能
+    function openContactModal() {
+        document.getElementById('contactModal').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    }
+
+    function closeContactModal() {
+        document.getElementById('contactModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }
+
+    // 点击模态框外部关闭
+    window.onclick = function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            closeContactModal();
+        }
+    }
+
+    // ESC 键关闭模态框
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeContactModal();
+        }
+    });
+
     // 页面加载完成后初始化所有功能
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 红人汉克手册网站已加载');
