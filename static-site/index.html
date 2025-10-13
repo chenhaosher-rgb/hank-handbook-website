@@ -25,6 +25,12 @@
                         <li><a href="resources.html">资源</a></li>
                     </ul>
                 </nav>
+                
+                <div class="header-contact">
+                    <button class="contact-btn" onclick="openContactModal()">
+                        联系我
+                    </button>
+                </div>
 
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="菜单">
                     <span>☰</span>
@@ -34,18 +40,40 @@
     </header>
 
     <!-- Hero 区域 -->
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <h2 class="search-title">运营问题智能搜索</h2>
+                <p class="search-description">输入您当前面临的运营难题，获取精准解决方案和专属资料包</p>
+                <form class="search-form" id="operations-search-form">
+                    <div class="search-input-group">
+                        <input type="text" id="operations-search" placeholder="例如：如何提升用户活跃度？如何增加粉丝转化？" required>
+                        <button type="submit" class="search-btn">
+                            <span class="search-btn-text">获取解决方案</span>
+                            <span class="search-btn-icon">🔍</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="search-suggestions">
+                    <span class="suggestion-label">热门问题：</span>
+                    <span class="suggestion-tag" onclick="searchSuggestion('用户增长')">用户增长</span>
+                    <span class="suggestion-tag" onclick="searchSuggestion('内容创作')">内容创作</span>
+                    <span class="suggestion-tag" onclick="searchSuggestion('变现策略')">变现策略</span>
+                    <span class="suggestion-tag" onclick="searchSuggestion('数据分析')">数据分析</span>
+                </div>
+                
+                <!-- Search Results -->
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+    </section>
+
     <section class="hero-section">
         <div class="container">
             <p class="hero-label">汉克运营知识库</p>
             <h1 class="hero-title">汉克运营知识库·搞钱计划</h1>
             <p class="hero-description">建立自己的运营系统，搞到第一桶金</p>
-            
-            <!-- Contact Button -->
-            <div class="contact-button-container">
-                <button class="contact-btn" onclick="openContactModal()">
-                    联系我
-                </button>
-            </div>
         </div>
     </section>
 

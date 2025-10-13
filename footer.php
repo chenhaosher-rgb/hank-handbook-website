@@ -138,6 +138,17 @@ document.addEventListener('keydown', function(event) {
         closeContactModal();
     }
 });
+
+// 搜索表单事件监听
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('operations-search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleSearch();
+        });
+    }
+});
 </script>
 
 </body>

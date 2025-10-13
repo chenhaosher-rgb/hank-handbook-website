@@ -46,6 +46,12 @@
                     ));
                     ?>
                 </nav>
+                
+                <div class="header-contact">
+                    <button class="contact-btn" onclick="openContactModal()">
+                        <?php echo esc_html(get_theme_mod('hero_cta_text', '联系我')); ?>
+                    </button>
+                </div>
 
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-controls="site-navigation" aria-expanded="false">
                     <span class="screen-reader-text">菜单</span>
