@@ -17,11 +17,12 @@ get_header();
             <h1 class="hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
             <p class="hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
             
-            <!-- Email Signup Form -->
-            <form class="email-signup-form" method="post" action="">
-                <input type="email" name="subscriber_email" placeholder="输入您的邮箱地址" required>
-                <button type="submit"><?php echo esc_html(get_theme_mod('hero_cta_text', '免费获取运营指南')); ?></button>
-            </form>
+            <!-- Contact Button -->
+            <div class="contact-button-container">
+                <button class="contact-btn" onclick="openContactModal()">
+                    <?php echo esc_html(get_theme_mod('hero_cta_text', '联系我')); ?>
+                </button>
+            </div>
         </div>
     </section>
 

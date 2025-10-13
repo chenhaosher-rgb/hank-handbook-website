@@ -159,7 +159,7 @@ function hank_handbook_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('hero_cta_text', array(
-        'default'           => '免费获取运营指南',
+        'default'           => '联系我',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
