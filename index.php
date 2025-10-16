@@ -10,6 +10,15 @@ get_header();
 
 <main id="primary" class="site-main">
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <p class="hero-label"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></p>
+            <h1 class="hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
+            <p class="hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
+        </div>
+    </section>
+
     <!-- Search Section -->
     <section class="search-section">
         <div class="container">
@@ -36,15 +45,6 @@ get_header();
                 <!-- Search Results -->
                 <div id="search-results" class="search-results"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <p class="hero-label"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></p>
-            <h1 class="hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
-            <p class="hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
         </div>
     </section>
 
