@@ -1,0 +1,66 @@
+/* 资源页样式 */
+.resources-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  padding: 48rpx 32rpx;
+  color: #ffffff;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}
+
+.header-description {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.resources-grid {
+  padding: 32rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+}
+
+.resource-card {
+  background-color: #ffffff;
+  padding: 32rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.resource-card.highlight {
+  border: 2rpx solid #dc2626;
+}
+
+.resource-icon {
+  font-size: 48rpx;
+  margin-bottom: 16rpx;
+}
+
+.resource-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+}
+
+.resource-description {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.resource-meta {
+  font-size: 22rpx;
+  color: #999999;
+}

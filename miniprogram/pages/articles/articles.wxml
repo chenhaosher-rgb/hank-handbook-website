@@ -1,0 +1,52 @@
+<!-- 文章列表页 -->
+<view class="articles-page">
+  <!-- 分类筛选 -->
+  <view class="categories">
+    <scroll-view scroll-x="true" class="categories-scroll">
+      <view class="category-list">
+        <view 
+          class="category-item {{currentCategory === item.id ? 'active' : ''}}"
+          wx:for="{{categories}}" 
+          wx:key="id"
+          bindtap="selectCategory"
+          data-id="{{item.id}}"
+        >
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 文章列表 -->
+  <view class="articles-list">
+    <view 
+      class="article-card"
+      wx:for="{{articles}}" 
+      wx:key="id"
+      bindtap="viewArticle"
+      data-id="{{item.id}}"
+    >
+      <image class="article-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="article-content">
+        <view class="article-badge">{{item.category}}</view>
+        <view class="article-title">{{item.title}}</view>
+        <view class="article-excerpt">{{item.excerpt}}</view>
+        <view class="article-meta">
+          <text class="article-date">{{item.date}}</text>
+          <text class="article-views">{{item.views}} 阅读</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <text class="load-more-text" bindtap="loadMore">加载更多</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{articles.length === 0}}">
+    <view class="empty-icon">📝</view>
+    <view class="empty-text">暂无文章</view>
+  </view>
+</view>

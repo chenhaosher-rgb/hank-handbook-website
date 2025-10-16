@@ -1,0 +1,28 @@
+<!-- 文章详情页 -->
+<view class="article-detail-page">
+  <view class="article-header">
+    <view class="article-category">{{article.category}}</view>
+    <view class="article-title">{{article.title}}</view>
+    <view class="article-meta">
+      <text class="meta-item">{{article.date}}</text>
+      <text class="meta-divider">·</text>
+      <text class="meta-item">{{article.views}} 阅读</text>
+    </view>
+  </view>
+
+  <image class="article-cover" src="{{article.image}}" mode="aspectFill"></image>
+
+  <view class="article-content">
+    <rich-text nodes="{{article.content}}"></rich-text>
+  </view>
+
+  <view class="article-tags">
+    <view class="tag" wx:for="{{article.tags}}" wx:key="*this">{{item}}</view>
+  </view>
+
+  <view class="article-actions">
+    <button class="action-btn share-btn" open-type="share">
+      <text>📤 分享文章</text>
+    </button>
+  </view>
+</view>

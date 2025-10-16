@@ -1,0 +1,58 @@
+<!-- 关于页 -->
+<view class="about-page">
+  <view class="about-header">
+    <image class="avatar" src="/images/avatar.jpg" mode="aspectFill"></image>
+    <view class="name">汉克</view>
+    <view class="title">运营知识分享者</view>
+  </view>
+
+  <view class="about-content">
+    <view class="section">
+      <view class="section-title">关于我</view>
+      <view class="section-text">
+        我是汉克，专注于运营知识分享，帮助更多人建立运营体系，实现搞钱目标。
+        通过分享实战经验和系统方法论，帮助大家从0到1建立自己的运营体系。
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">我能提供</view>
+      <view class="feature-list">
+        <view class="feature-item">
+          <view class="feature-icon">📚</view>
+          <view class="feature-text">完整的运营知识体系</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">🛠️</view>
+          <view class="feature-text">实用的运营工具和模板</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">💡</view>
+          <view class="feature-text">经过验证的实战经验</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">🎯</view>
+          <view class="feature-text">一对一运营咨询服务</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">联系方式</view>
+      <button class="contact-btn" bindtap="showContactModal">
+        <text>📱 扫码添加微信</text>
+      </button>
+    </view>
+  </view>
+</view>
+
+<!-- 联系弹窗 -->
+<view class="contact-modal" wx:if="{{showContactModal}}" bindtap="hideContactModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-close" bindtap="hideContactModal">×</view>
+    <view class="modal-title">扫码添加微信</view>
+    <image class="qr-code" src="/images/wechat-qr.jpg" mode="aspectFit"></image>
+    <view class="qr-text">扫描二维码添加我的微信</view>
+    <view class="qr-hint">长按识别二维码</view>
+  </view>
+</view>

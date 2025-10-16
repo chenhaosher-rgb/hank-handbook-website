@@ -1,0 +1,24 @@
+<!-- 资源页 -->
+<view class="resources-page">
+  <view class="page-header">
+    <view class="header-title">运营工具库</view>
+    <view class="header-description">精选运营工具和资源，助力你的搞钱计划</view>
+  </view>
+
+  <view class="resources-grid">
+    <view 
+      class="resource-card {{item.highlight ? 'highlight' : ''}}"
+      wx:for="{{resources}}" 
+      wx:key="id"
+      bindtap="viewDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="resource-icon">{{item.icon}}</view>
+      <view class="resource-title">{{item.title}}</view>
+      <view class="resource-description">{{item.description}}</view>
+      <view class="resource-meta">
+        <text class="resource-count">{{item.downloads}} 次下载</text>
+      </view>
+    </view>
+  </view>
+</view>

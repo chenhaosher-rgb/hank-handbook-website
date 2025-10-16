@@ -1,0 +1,97 @@
+<!-- 搜索页 -->
+<view class="search-page">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-group">
+      <input 
+        class="search-input" 
+        placeholder="输入您的运营问题..." 
+        value="{{keyword}}"
+        bindinput="onInputChange"
+        bindconfirm="handleSearch"
+        focus="{{autoFocus}}"
+      />
+      <button class="search-btn" bindtap="handleSearch">搜索</button>
+    </view>
+  </view>
+
+  <!-- 热门标签 -->
+  <view class="popular-tags" wx:if="{{!hasSearched}}">
+    <view class="tags-title">热门搜索</view>
+    <view class="tags-list">
+      <view 
+        class="tag-item"
+        wx:for="{{popularTags}}" 
+        wx:key="index"
+        bindtap="searchByTag"
+        data-tag="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view class="search-results" wx:if="{{hasSearched}}">
+    <view class="results-header" wx:if="{{results.length > 0}}">
+      找到 <text class="highlight">{{results.length}}</text> 个解决方案
+    </view>
+
+    <!-- 解决方案列表 -->
+    <view class="solution-list">
+      <view 
+        class="solution-item"
+        wx:for="{{results}}" 
+        wx:key="id"
+      >
+        <view class="solution-header">
+          <view class="solution-title">{{item.title}}</view>
+          <view class="solution-score">匹配度: {{item.score}}%</view>
+        </view>
+        
+        <view class="solution-description">{{item.description}}</view>
+        
+        <view class="solution-tags">
+          <view class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">
+            {{tag}}
+          </view>
+        </view>
+
+        <!-- 资源包 -->
+        <view class="resource-package" wx:if="{{item.resources}}">
+          <view class="package-title">📦 相关资源包</view>
+          <view class="resources-grid">
+            <view 
+              class="resource-item"
+              wx:for="{{item.resources}}" 
+              wx:for-item="resource"
+              wx:key="id"
+            >
+              <view class="resource-info">
+                <view class="resource-name">{{resource.name}}</view>
+                <view class="resource-size">{{resource.size}}</view>
+              </view>
+              <view class="resource-actions">
+                <button 
+                  class="action-btn download-btn"
+                  bindtap="downloadResource"
+                  data-url="{{resource.downloadUrl}}"
+                  data-name="{{resource.name}}"
+                >
+                  下载
+                </button>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{results.length === 0}}">
+      <view class="empty-icon">🔍</view>
+      <view class="empty-text">未找到相关内容</view>
+      <view class="empty-hint">试试其他关键词</view>
+    </view>
+  </view>
+</view>
