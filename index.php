@@ -10,31 +10,24 @@ get_header();
 
 <main id="primary" class="site-main">
 
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- Search Section (作为首页主要内容，类似小程序卡片) -->
+    <section class="search-hero-section">
         <div class="container">
-            <p class="hero-label"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></p>
-            <h1 class="hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
-            <p class="hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-container">
-                <h2 class="search-title">运营问题智能搜索</h2>
-                <p class="search-description">输入您当前面临的运营难题，获取精准解决方案和专属资料包</p>
-                <form class="search-form" id="operations-search-form">
-                    <div class="search-input-group">
-                        <input type="text" id="operations-search" placeholder="例如：如何提升用户活跃度？如何增加粉丝转化？" required>
-                        <button type="submit" class="search-btn">
-                            <span class="search-btn-text">获取解决方案</span>
-                            <span class="search-btn-icon">🔍</span>
+            <div class="search-hero-card">
+                <div class="search-hero-badge"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></div>
+                <h1 class="search-hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
+                <p class="search-hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
+                
+                <form class="search-hero-form" id="operations-search-form">
+                    <div class="search-hero-input-group">
+                        <input type="text" id="operations-search" placeholder="搜索运营解决方案" required>
+                        <button type="submit" class="search-hero-btn">
+                            <span class="search-hero-icon">🔍</span>
                         </button>
                     </div>
                 </form>
-                <div class="search-suggestions">
+                
+                <div class="search-hero-suggestions">
                     <span class="suggestion-label">热门问题：</span>
                     <span class="suggestion-tag" onclick="searchSuggestion('用户增长')">用户增长</span>
                     <span class="suggestion-tag" onclick="searchSuggestion('内容创作')">内容创作</span>

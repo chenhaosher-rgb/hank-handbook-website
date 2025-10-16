@@ -772,6 +772,130 @@ p {
 }
 
 
+/* Search Hero Section - 类似小程序卡片设计 */
+.search-hero-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-background);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.search-hero-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #991b1b 100%);
+    border-radius: 24px;
+    padding: 48px 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.search-hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.search-hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.search-hero-description {
+    font-size: 18px;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.search-hero-form {
+    margin-bottom: 32px;
+}
+
+.search-hero-input-group {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 48px;
+    padding: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.search-hero-input-group input {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--color-text);
+    outline: none;
+}
+
+.search-hero-input-group input::placeholder {
+    color: #999;
+}
+
+.search-hero-btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-hero-btn:hover {
+    background-color: #991b1b;
+    transform: scale(1.05);
+}
+
+.search-hero-icon {
+    font-size: 18px;
+}
+
+.search-hero-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.search-hero-suggestions .suggestion-label {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-right: 8px;
+}
+
+.search-hero-suggestions .suggestion-tag {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-hero-suggestions .suggestion-tag:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
 /* Search Section */
 .search-section {
     background: linear-gradient(135deg, var(--color-primary) 0%, #991b1b 100%);
