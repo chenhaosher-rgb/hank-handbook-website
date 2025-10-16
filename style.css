@@ -772,24 +772,22 @@ p {
 }
 
 
-/* Search Hero Section - 类似小程序卡片设计 */
+/* Search Hero Section - 全宽度设计 */
 .search-hero-section {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--color-background);
-    min-height: 60vh;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #991b1b 100%);
+    min-height: 70vh;
     display: flex;
     align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.search-hero-card {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #991b1b 100%);
-    border-radius: 24px;
-    padding: 48px 40px;
+.search-hero-content {
+    width: 100%;
+    padding: 80px 40px;
     text-align: center;
     color: white;
-    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
-    margin: 0 auto;
-    max-width: 800px;
 }
 
 .search-hero-badge {

@@ -10,34 +10,32 @@ get_header();
 
 <main id="primary" class="site-main">
 
-    <!-- Search Section (作为首页主要内容，类似小程序卡片) -->
+    <!-- Search Section (全宽度设计) -->
     <section class="search-hero-section">
-        <div class="container">
-            <div class="search-hero-card">
-                <div class="search-hero-badge"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></div>
-                <h1 class="search-hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
-                <p class="search-hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
-                
-                <form class="search-hero-form" id="operations-search-form">
-                    <div class="search-hero-input-group">
-                        <input type="text" id="operations-search" placeholder="搜索运营解决方案" required>
-                        <button type="submit" class="search-hero-btn">
-                            <span class="search-hero-icon">🔍</span>
-                        </button>
-                    </div>
-                </form>
-                
-                <div class="search-hero-suggestions">
-                    <span class="suggestion-label">热门问题：</span>
-                    <span class="suggestion-tag" onclick="searchSuggestion('用户增长')">用户增长</span>
-                    <span class="suggestion-tag" onclick="searchSuggestion('内容创作')">内容创作</span>
-                    <span class="suggestion-tag" onclick="searchSuggestion('变现策略')">变现策略</span>
-                    <span class="suggestion-tag" onclick="searchSuggestion('数据分析')">数据分析</span>
+        <div class="search-hero-content">
+            <div class="search-hero-badge"><?php echo esc_html(get_theme_mod('hero_label', '汉克运营知识库')); ?></div>
+            <h1 class="search-hero-title"><?php echo esc_html(get_theme_mod('hero_title', '汉克运营知识库·搞钱计划')); ?></h1>
+            <p class="search-hero-description"><?php echo esc_html(get_theme_mod('hero_description', '建立自己的运营系统，搞到第一桶金')); ?></p>
+            
+            <form class="search-hero-form" id="operations-search-form">
+                <div class="search-hero-input-group">
+                    <input type="text" id="operations-search" placeholder="搜索运营解决方案" required>
+                    <button type="submit" class="search-hero-btn">
+                        <span class="search-hero-icon">🔍</span>
+                    </button>
                 </div>
-                
-                <!-- Search Results -->
-                <div id="search-results" class="search-results"></div>
+            </form>
+            
+            <div class="search-hero-suggestions">
+                <span class="suggestion-label">热门问题：</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('用户增长')">用户增长</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('内容创作')">内容创作</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('变现策略')">变现策略</span>
+                <span class="suggestion-tag" onclick="searchSuggestion('数据分析')">数据分析</span>
             </div>
+            
+            <!-- Search Results -->
+            <div id="search-results" class="search-results"></div>
         </div>
     </section>
 
