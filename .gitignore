@@ -69,6 +69,13 @@ config/database.yml
 !WORDPRESS-UPLOAD-GUIDE.md
 !GITHUB-COLLABORATION-GUIDE.md
 !CURSOR-GITHUB-QUICK-START.md
-
-# 静态网站文件（如果不需要版本控制）
-static-site/
+!THREE-PLATFORM-SYNC-GUIDE.md
+!QUICK-START.md
+!PROJECT-SUMMARY.md
+!wordpress-login-troubleshoot.md
+!onepanel-wordpress-fix.md
+!wordpress-manual-install.md
+!server-quick-check.md
+!git-config-setup.md
+!ai-integration-guide.md
+!upload-resources-guide.md
