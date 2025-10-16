@@ -1,0 +1,171 @@
+<!--运营知识库 VIP 页面-->
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="page-header">
+    <view class="breadcrumb">
+      <text class="breadcrumb-item">首页</text>
+      <text class="breadcrumb-separator">></text>
+      <text class="breadcrumb-item">资源库</text>
+      <text class="breadcrumb-separator">></text>
+      <text class="breadcrumb-item current">运营知识库 VIP</text>
+    </view>
+    
+    <view class="resource-hero">
+      <view class="resource-badge">热门推荐</view>
+      <view class="resource-title">运营知识库 VIP</view>
+      <view class="resource-subtitle">完整运营体系。从零到一的运营系统，包含内容创作、用户增长、变现策略。</view>
+      
+      <view class="resource-stats">
+        <view class="stat-item">
+          <view class="stat-number">25MB</view>
+          <view class="stat-label">文件大小</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-number">1,234</view>
+          <view class="stat-label">下载次数</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-number">免费</view>
+          <view class="stat-label">价格</view>
+        </view>
+      </view>
+      
+      <view class="resource-actions">
+        <button class="btn btn-primary" bindtap="downloadResource">
+          <text class="btn-icon">📥</text>
+          <text>立即获取</text>
+        </button>
+        <button class="btn btn-outline" bindtap="previewResource">
+          <text class="btn-icon">👁️</text>
+          <text>预览内容</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 知识库内容 -->
+  <view class="knowledge-content">
+    <view class="content-main">
+      <view class="section-title">知识库内容</view>
+      
+      <view class="knowledge-modules">
+        <view class="module-item">
+          <view class="module-icon">📚</view>
+          <view class="module-content">
+            <view class="module-title">运营基础理论</view>
+            <view class="module-description">运营的本质、核心思维、方法论框架，帮你建立正确的运营认知。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 运营的定义与价值</view>
+              <view class="feature-item">✓ 运营的核心思维模式</view>
+              <view class="feature-item">✓ 运营方法论框架</view>
+              <view class="feature-item">✓ 运营岗位职责解析</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">✍️</view>
+          <view class="module-content">
+            <view class="module-title">内容创作体系</view>
+            <view class="module-description">从选题到发布的全流程内容创作方法，打造爆款内容的秘诀。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 内容选题策略</view>
+              <view class="feature-item">✓ 文案写作技巧</view>
+              <view class="feature-item">✓ 视觉设计规范</view>
+              <view class="feature-item">✓ 内容发布策略</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">📈</view>
+          <view class="module-content">
+            <view class="module-title">用户增长策略</view>
+            <view class="module-description">从0到10万粉丝的完整增长路径，包含获客、留存、活跃的实战方法。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 用户画像分析</view>
+              <view class="feature-item">✓ 获客渠道策略</view>
+              <view class="feature-item">✓ 用户留存机制</view>
+              <view class="feature-item">✓ 增长黑客技巧</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">💰</view>
+          <view class="module-content">
+            <view class="module-title">变现策略指南</view>
+            <view class="module-description">7种主流变现方式详解，从知识付费到电商带货的完整变现路径。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 知识付费模式</view>
+              <view class="feature-item">✓ 广告变现策略</view>
+              <view class="feature-item">✓ 电商带货技巧</view>
+              <view class="feature-item">✓ 服务变现方法</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="content-sidebar">
+      <view class="sidebar-card">
+        <view class="card-title">知识库特色</view>
+        <view class="feature-list">
+          <view class="feature-item">✅ 30+ 实战案例</view>
+          <view class="feature-item">✅ 可复制模板</view>
+          <view class="feature-item">✅ 持续更新</view>
+          <view class="feature-item">✅ VIP 专享</view>
+        </view>
+      </view>
+      
+      <view class="sidebar-card">
+        <view class="card-title">适用人群</view>
+        <view class="audience-list">
+          <view class="audience-item">📱 新媒体运营</view>
+          <view class="audience-item">🎯 产品运营</view>
+          <view class="audience-item">📊 数据分析师</view>
+          <view class="audience-item">🚀 创业者</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 相关资源 -->
+  <view class="related-resources">
+    <view class="section-title">相关资源</view>
+    <view class="resources-grid">
+      <view class="resource-card" bindtap="navigateToPage" data-page="content-toolbox">
+        <view class="resource-card-image">
+          <view class="resource-placeholder">📝</view>
+          <view class="resource-category">内容创作</view>
+        </view>
+        <view class="resource-card-content">
+          <view class="resource-card-title">内容创作工具箱</view>
+          <view class="resource-card-description">AI 内容生成工具包，包含文案模板、选题策略、爆款内容公式。</view>
+        </view>
+      </view>
+      
+      <view class="resource-card" bindtap="navigateToPage" data-page="growth-handbook">
+        <view class="resource-card-image">
+          <view class="resource-placeholder">👥</view>
+          <view class="resource-category">用户增长</view>
+        </view>
+        <view class="resource-card-content">
+          <view class="resource-card-title">用户增长手册</view>
+          <view class="resource-card-description">从0到10万粉丝的完整增长策略，包含引流、留存、变现全链路。</view>
+        </view>
+      </view>
+      
+      <view class="resource-card" bindtap="navigateToPage" data-page="monetization-guide">
+        <view class="resource-card-image">
+          <view class="resource-placeholder">💰</view>
+          <view class="resource-category">变现策略</view>
+        </view>
+        <view class="resource-card-content">
+          <view class="resource-card-title">变现策略指南</view>
+          <view class="resource-card-description">7种主流变现方式详解，从知识付费到电商带货，找到适合你的搞钱路径。</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

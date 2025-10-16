@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "运营知识库 VIP",
+  "navigationBarBackgroundColor": "#dc2626",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}
