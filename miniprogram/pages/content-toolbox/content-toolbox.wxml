@@ -1,0 +1,132 @@
+<!--内容创作工具箱页面-->
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="page-header">
+    <view class="breadcrumb">
+      <text class="breadcrumb-item">首页</text>
+      <text class="breadcrumb-separator">></text>
+      <text class="breadcrumb-item">资源库</text>
+      <text class="breadcrumb-separator">></text>
+      <text class="breadcrumb-item current">内容创作工具箱</text>
+    </view>
+    
+    <view class="resource-hero">
+      <view class="resource-badge">内容创作</view>
+      <view class="resource-title">内容创作工具箱</view>
+      <view class="resource-subtitle">AI 内容生成工具包，包含文案模板、选题策略、爆款内容公式，让你的内容创作事半功倍。</view>
+      
+      <view class="resource-stats">
+        <view class="stat-item">
+          <view class="stat-number">15MB</view>
+          <view class="stat-label">文件大小</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-number">856</view>
+          <view class="stat-label">下载次数</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-number">免费</view>
+          <view class="stat-label">价格</view>
+        </view>
+      </view>
+      
+      <view class="resource-actions">
+        <button class="btn btn-primary" bindtap="downloadResource">
+          <text class="btn-icon">📥</text>
+          <text>立即获取</text>
+        </button>
+        <button class="btn btn-outline" bindtap="previewResource">
+          <text class="btn-icon">👁️</text>
+          <text>预览内容</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工具箱内容 -->
+  <view class="toolbox-content">
+    <view class="content-main">
+      <view class="section-title">工具箱内容</view>
+      
+      <view class="toolbox-modules">
+        <view class="module-item">
+          <view class="module-icon">📝</view>
+          <view class="module-content">
+            <view class="module-title">文案模板库</view>
+            <view class="module-description">50+ 经过验证的文案模板，覆盖各种场景和行业，让你的文案更有说服力。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 标题文案模板</view>
+              <view class="feature-item">✓ 产品介绍模板</view>
+              <view class="feature-item">✓ 活动推广模板</view>
+              <view class="feature-item">✓ 用户故事模板</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">🎯</view>
+          <view class="module-content">
+            <view class="module-title">选题策略指南</view>
+            <view class="module-description">系统化的选题方法论，帮你找到用户感兴趣的内容方向，提升内容传播效果。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 用户需求分析</view>
+              <view class="feature-item">✓ 热门话题追踪</view>
+              <view class="feature-item">✓ 竞争对手分析</view>
+              <view class="feature-item">✓ 内容规划方法</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">🔥</view>
+          <view class="module-content">
+            <view class="module-title">爆款内容公式</view>
+            <view class="module-description">揭秘爆款内容的创作规律，掌握让内容病毒式传播的核心要素。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ 爆款标题公式</view>
+              <view class="feature-item">✓ 内容结构模板</view>
+              <view class="feature-item">✓ 情绪触发技巧</view>
+              <view class="feature-item">✓ 传播机制设计</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="module-item">
+          <view class="module-icon">🤖</view>
+          <view class="module-content">
+            <view class="module-title">AI 工具推荐</view>
+            <view class="module-description">精选的 AI 内容创作工具，提升创作效率，让 AI 成为你的创作助手。</view>
+            <view class="module-features">
+              <view class="feature-item">✓ AI 写作工具</view>
+              <view class="feature-item">✓ 智能配图工具</view>
+              <view class="feature-item">✓ 视频制作工具</view>
+              <view class="feature-item">✓ 数据分析工具</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="content-sidebar">
+      <view class="sidebar-card">
+        <view class="card-title">工具箱特色</view>
+        <view class="feature-list">
+          <view class="feature-item">✅ 50+ 文案模板</view>
+          <view class="feature-item">✅ 爆款标题公式</view>
+          <view class="feature-item">✅ 选题策略指南</view>
+          <view class="feature-item">✅ AI 工具推荐</view>
+        </view>
+      </view>
+      
+      <view class="sidebar-card">
+        <view class="card-title">适用人群</view>
+        <view class="audience-list">
+          <view class="audience-item">✍️ 文案策划</view>
+          <view class="audience-item">📱 新媒体运营</view>
+          <view class="audience-item">🎨 内容创作者</view>
+          <view class="audience-item">📢 营销人员</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

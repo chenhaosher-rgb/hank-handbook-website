@@ -1,0 +1,14 @@
+/* 页面样式 - 复用知识库样式 */
+@import '../knowledge-base/knowledge-base.wxss';
+
+.content-section {
+  padding: 60rpx 30rpx;
+  background-color: white;
+}
+
+.content-placeholder {
+  text-align: center;
+  padding: 80rpx 0;
+  color: #6b7280;
+  font-size: 28rpx;
+}

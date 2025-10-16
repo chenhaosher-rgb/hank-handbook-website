@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "数据分析工具",
+  "navigationBarBackgroundColor": "#dc2626",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": true
+}

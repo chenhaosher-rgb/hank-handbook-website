@@ -1,0 +1,10 @@
+/* 内容创作工具箱页面样式 - 复用知识库样式 */
+@import '../knowledge-base/knowledge-base.wxss';
+
+.resource-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.module-icon {
+  background-color: #f8f9fa;
+}

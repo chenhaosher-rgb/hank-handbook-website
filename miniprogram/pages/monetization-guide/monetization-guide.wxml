@@ -1,0 +1,24 @@
+<!--变现策略指南 页面-->
+<view class="container">
+  <view class="page-header">
+    <view class="resource-hero">
+      <view class="resource-title">变现策略指南</view>
+      <view class="resource-subtitle">7 种主流变现方式详解，从知识付费到电商带货，找到适合你的搞钱路径。</view>
+      <view class="resource-actions">
+        <button class="btn btn-primary" bindtap="downloadResource">
+          <text>📥 立即获取</text>
+        </button>
+        <button class="btn btn-outline" bindtap="previewResource">
+          <text>👁️ 预览内容</text>
+        </button>
+      </view>
+    </view>
+  </view>
+  
+  <view class="content-section">
+    <view class="section-title">页面内容</view>
+    <view class="content-placeholder">
+      <text>详细内容正在完善中...</text>
+    </view>
+  </view>
+</view>

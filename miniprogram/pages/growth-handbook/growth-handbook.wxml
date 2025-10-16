@@ -1,0 +1,24 @@
+<!--用户增长手册 页面-->
+<view class="container">
+  <view class="page-header">
+    <view class="resource-hero">
+      <view class="resource-title">用户增长手册</view>
+      <view class="resource-subtitle">从 0 到 10 万粉丝的完整增长策略，包含引流、留存、变现全链路。</view>
+      <view class="resource-actions">
+        <button class="btn btn-primary" bindtap="downloadResource">
+          <text>📥 立即获取</text>
+        </button>
+        <button class="btn btn-outline" bindtap="previewResource">
+          <text>👁️ 预览内容</text>
+        </button>
+      </view>
+    </view>
+  </view>
+  
+  <view class="content-section">
+    <view class="section-title">页面内容</view>
+    <view class="content-placeholder">
+      <text>详细内容正在完善中...</text>
+    </view>
+  </view>
+</view>

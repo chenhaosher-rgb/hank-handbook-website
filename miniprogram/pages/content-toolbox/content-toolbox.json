@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "内容创作工具箱",
+  "navigationBarBackgroundColor": "#dc2626",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": true
+}

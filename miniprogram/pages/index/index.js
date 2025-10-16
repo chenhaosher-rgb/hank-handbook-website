@@ -12,7 +12,7 @@ Page({
     ],
     resources: [
       {
-        id: 1,
+        id: 'knowledge-base',
         icon: '📚',
         title: '运营知识库 VIP',
         description: '完整的运营体系和实战经验',
@@ -20,25 +20,39 @@ Page({
         highlight: true
       },
       {
-        id: 2,
+        id: 'content-toolbox',
         icon: '🛠️',
         title: '内容创作工具箱',
         description: '30+ 实用工具和模板',
         downloads: 856
       },
       {
-        id: 3,
+        id: 'growth-handbook',
         icon: '📈',
         title: '用户增长手册',
         description: '从 0 到 10 万粉丝的完整路径',
         downloads: 2341
       },
       {
-        id: 4,
+        id: 'monetization-guide',
         icon: '💰',
         title: '变现策略指南',
         description: '7 种可复制的变现模式',
         downloads: 1567
+      },
+      {
+        id: 'data-analysis',
+        icon: '📊',
+        title: '数据分析工具',
+        description: '运营必备的数据分析模板和工具',
+        downloads: 982
+      },
+      {
+        id: 'case-library',
+        icon: '📋',
+        title: '运营案例库',
+        description: '100+ 成功运营案例拆解',
+        downloads: 1876
       }
     ],
     articles: [
@@ -137,9 +151,27 @@ Page({
   // 查看资源详情
   viewResource(e) {
     const id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: `/pages/resources/resources?id=${id}`
-    });
+    
+    // 根据资源ID跳转到对应页面
+    const pageMap = {
+      'knowledge-base': '/pages/knowledge-base/knowledge-base',
+      'content-toolbox': '/pages/content-toolbox/content-toolbox',
+      'growth-handbook': '/pages/growth-handbook/growth-handbook',
+      'monetization-guide': '/pages/monetization-guide/monetization-guide',
+      'data-analysis': '/pages/data-analysis/data-analysis',
+      'case-library': '/pages/case-library/case-library'
+    };
+    
+    if (pageMap[id]) {
+      wx.navigateTo({
+        url: pageMap[id]
+      });
+    } else {
+      wx.showToast({
+        title: '页面开发中',
+        icon: 'none'
+      });
+    }
   },
 
   // 导航到文章页
