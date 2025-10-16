@@ -85,37 +85,37 @@ get_header();
                         <span class="badge" style="background: var(--color-red); color: var(--color-secondary); padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: var(--spacing-sm); display: inline-block;">热门推荐</span>
                         <h3>运营知识库 VIP</h3>
                         <p><strong>完整运营体系。</strong> 从零到一的运营系统，包含内容创作、用户增长、变现策略。</p>
-                        <a href="#" class="btn">立即获取</a>
+                        <a href="<?php echo home_url(); ?>/page-knowledge-base" class="btn">立即获取</a>
                     </div>
                     
                     <div class="resource-card">
                         <h3>内容创作工具箱</h3>
                         <p><strong>AI 内容生成工具包</strong>，包含文案模板、选题策略、爆款内容公式。</p>
-                        <a href="#" class="btn">立即获取</a>
+                        <a href="<?php echo home_url(); ?>/page-content-toolbox" class="btn">立即获取</a>
                     </div>
                     
                     <div class="resource-card">
                         <h3>用户增长手册</h3>
                         <p>从 0 到 10 万粉丝的完整增长策略，<strong>包含引流、留存、变现全链路</strong>。</p>
-                        <a href="#" class="btn">查看详情</a>
+                        <a href="<?php echo home_url(); ?>/page-growth-handbook" class="btn">查看详情</a>
                     </div>
                     
                     <div class="resource-card">
                         <h3>变现策略指南</h3>
                         <p>7 种主流变现方式详解，从知识付费到电商带货，找到适合你的搞钱路径。</p>
-                        <a href="#" class="btn">获取指南</a>
+                        <a href="<?php echo home_url(); ?>/page-monetization-guide" class="btn">获取指南</a>
                     </div>
                     
                     <div class="resource-card">
                         <h3>数据分析工具</h3>
                         <p>运营必备的数据分析模板和工具，让数据驱动你的运营决策。</p>
-                        <a href="#" class="btn">下载工具</a>
+                        <a href="<?php echo home_url(); ?>/page-data-analysis" class="btn">下载工具</a>
                     </div>
                     
                     <div class="resource-card">
                         <h3>运营案例库</h3>
                         <p>100+ 成功运营案例拆解，学习大厂和网红们的运营秘籍。</p>
-                        <a href="#" class="btn">查看案例</a>
+                        <a href="<?php echo home_url(); ?>/page-case-library" class="btn">查看案例</a>
                     </div>
                 <?php endif; ?>
             </div>
