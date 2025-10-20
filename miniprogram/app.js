@@ -1,75 +1,177 @@
 // app.js
 App({
+  globalData: {
+    userInfo: null,
+    token: null,
+    apiUrl: 'http://47.108.70.67/wp-json/hank-wechat/v1' // 请替换为您的实际API地址
+  },
+  
   onLaunch() {
-    // 小程序启动时执行
-    console.log('汉克运营知识库小程序启动');
-    
-    // 获取系统信息
-    this.getSystemInfo();
-    
-    // 检查更新
-    this.checkUpdate();
+    console.log('小程序启动');
+    this.checkLogin();
   },
   
-  onShow() {
-    // 小程序显示时执行
+  // 检查登录状态
+  checkLogin() {
+    const token = wx.getStorageSync('hank_token');
+    if (token) {
+      // 验证token是否有效
+      this.validateToken(token);
+    } else {
+      // 没有token，执行微信登录
+      this.wxLogin();
+    }
   },
   
-  onHide() {
-    // 小程序隐藏时执行
-  },
-  
-  // 获取系统信息
-  getSystemInfo() {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.globalData.systemInfo = res;
-        this.globalData.statusBarHeight = res.statusBarHeight;
-        this.globalData.screenHeight = res.screenHeight;
+  // 微信登录
+  wxLogin() {
+    wx.login({
+      success: res => {
+        if (res.code) {
+          console.log('获取code成功:', res.code);
+          // 将code发送到后端
+          this.sendCodeToBackend(res.code);
+        } else {
+          console.error('获取code失败', res);
+        }
+      },
+      fail: err => {
+        console.error('wx.login失败', err);
       }
     });
   },
   
-  // 检查小程序更新
-  checkUpdate() {
-    if (wx.canIUse('getUpdateManager')) {
-      const updateManager = wx.getUpdateManager();
-      
-      updateManager.onCheckForUpdate((res) => {
-        if (res.hasUpdate) {
-          updateManager.onUpdateReady(() => {
-            wx.showModal({
-              title: '更新提示',
-              content: '新版本已准备好，是否重启应用？',
-              success: (res) => {
-                if (res.confirm) {
-                  updateManager.applyUpdate();
-                }
-              }
-            });
-          });
+  // 发送code到后端
+  sendCodeToBackend(code) {
+    wx.request({
+      url: this.globalData.apiUrl + '/miniprogram/login',
+      method: 'POST',
+      data: {
+        code: code
+      },
+      success: res => {
+        console.log('登录API响应:', res.data);
+        if (res.data.success) {
+          // 保存token
+          const token = res.data.token;
+          wx.setStorageSync('hank_token', token);
+          this.globalData.token = token;
+          this.globalData.userInfo = res.data.userInfo;
           
-          updateManager.onUpdateFailed(() => {
-            wx.showModal({
-              title: '更新失败',
-              content: '新版本下载失败，请删除小程序重新打开',
-              showCancel: false
-            });
-          });
+          // 触发登录成功事件
+          this.triggerLoginSuccess(res.data.userInfo);
+        } else {
+          console.error('登录失败:', res.data);
+        }
+      },
+      fail: err => {
+        console.error('请求登录API失败:', err);
+      }
+    });
+  },
+  
+  // 获取用户信息并更新
+  getUserProfileAndUpdate() {
+    return new Promise((resolve, reject) => {
+      wx.getUserProfile({
+        desc: '用于完善用户资料',
+        success: res => {
+          console.log('获取用户信息成功:', res.userInfo);
+          // 更新到后端
+          this.updateUserProfile(res.userInfo);
+          resolve(res.userInfo);
+        },
+        fail: err => {
+          console.error('获取用户信息失败:', err);
+          reject(err);
         }
       });
+    });
+  },
+  
+  // 更新用户资料
+  updateUserProfile(userInfo) {
+    if (!this.globalData.token) {
+      console.error('没有token，无法更新用户资料');
+      return;
+    }
+    
+    wx.request({
+      url: this.globalData.apiUrl + '/update-profile',
+      method: 'POST',
+      header: {
+        'Authorization': 'Bearer ' + this.globalData.token
+      },
+      data: {
+        nickname: userInfo.nickName,
+        avatar: userInfo.avatarUrl
+      },
+      success: res => {
+        console.log('更新用户资料成功:', res.data);
+        if (res.data.success) {
+          // 更新本地缓存
+          this.globalData.userInfo = res.data.userInfo;
+        }
+      },
+      fail: err => {
+        console.error('更新用户资料失败:', err);
+      }
+    });
+  },
+  
+  // 验证token
+  validateToken(token) {
+    wx.request({
+      url: this.globalData.apiUrl + '/validate',
+      method: 'POST',
+      data: {
+        token: token
+      },
+      success: res => {
+        console.log('验证token响应:', res.data);
+        if (res.data.valid) {
+          // token有效
+          this.globalData.token = token;
+          this.globalData.userInfo = res.data.userInfo;
+          this.triggerLoginSuccess(res.data.userInfo);
+        } else {
+          // token无效，重新登录
+          console.log('token无效，重新登录');
+          wx.removeStorageSync('hank_token');
+          this.wxLogin();
+        }
+      },
+      fail: err => {
+        console.error('验证token失败:', err);
+        // 网络错误，使用本地缓存的token
+        this.globalData.token = token;
+      }
+    });
+  },
+  
+  // 触发登录成功事件
+  triggerLoginSuccess(userInfo) {
+    // 可以在这里处理登录成功后的逻辑
+    console.log('登录成功，用户信息:', userInfo);
+    
+    // 发送自定义事件通知其他页面
+    if (typeof this.loginSuccessCallback === 'function') {
+      this.loginSuccessCallback(userInfo);
     }
   },
   
-  // 全局数据
-  globalData: {
-    userInfo: null,
-    systemInfo: null,
-    statusBarHeight: 0,
-    screenHeight: 0,
-    // API 基础地址（如果需要对接 WordPress API）
-    apiBaseUrl: 'https://47.108.70.67/wp-json/wp/v2',
-    // 静态资源地址
-    staticUrl: 'https://47.108.70.67'
+  // 登出
+  logout() {
+    wx.removeStorageSync('hank_token');
+    this.globalData.token = null;
+    this.globalData.userInfo = null;
+    
+    // 重新登录
+    this.wxLogin();
+  },
+  
+  // 检查是否已登录
+  isLoggedIn() {
+    return !!this.globalData.token && !!this.globalData.userInfo;
   }
-});
+})

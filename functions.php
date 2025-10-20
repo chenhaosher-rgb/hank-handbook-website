@@ -10,6 +10,12 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * 加载微信登录功能
+ */
+require_once get_template_directory() . '/wechat-login.php';
+require_once get_template_directory() . '/wechat-api.php';
+
+/**
  * 主题设置
  */
 function hank_handbook_setup() {
