@@ -1,0 +1,48 @@
+<!-- 我的资料包页面 -->
+<view class="packages-page">
+  
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{packages.length === 0}}">
+    <view class="empty-icon">📦</view>
+    <view class="empty-text">还没有资料包哦</view>
+    <view class="empty-hint">搜索并下载感兴趣的资料包吧</view>
+    <button class="goto-search-btn" bindtap="gotoSearch">
+      <text>去搜索</text>
+    </button>
+  </view>
+
+  <!-- 资料包列表 -->
+  <view class="packages-list" wx:else>
+    <view 
+      class="package-item" 
+      wx:for="{{packages}}" 
+      wx:key="id"
+      bindtap="viewPackage"
+      data-package="{{item}}"
+    >
+      <view class="package-header">
+        <view class="package-icon">{{item.icon}}</view>
+        <view class="package-info">
+          <view class="package-title">{{item.title}}</view>
+          <view class="package-time">{{item.downloadTime}}</view>
+        </view>
+      </view>
+      
+      <view class="package-desc">{{item.description}}</view>
+      
+      <view class="package-footer">
+        <view class="package-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="package-actions">
+          <button class="action-btn" catchtap="downloadAgain" data-id="{{item.id}}">
+            <text>📥 再次下载</text>
+          </button>
+          <button class="action-btn delete" catchtap="deletePackage" data-id="{{item.id}}">
+            <text>🗑️ 删除</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

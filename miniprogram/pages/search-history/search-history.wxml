@@ -1,0 +1,52 @@
+<!-- 搜索记录页面 -->
+<view class="history-page">
+  
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{history.length === 0}}">
+    <view class="empty-icon">🔍</view>
+    <view class="empty-text">还没有搜索记录</view>
+    <view class="empty-hint">搜索运营问题，获取解决方案</view>
+    <button class="goto-search-btn" bindtap="gotoSearch">
+      <text>去搜索</text>
+    </button>
+  </view>
+
+  <!-- 搜索记录列表 -->
+  <view class="history-container" wx:else>
+    <!-- 操作栏 -->
+    <view class="history-header">
+      <text class="history-count">共 {{history.length}} 条记录</text>
+      <button class="clear-btn" bindtap="clearHistory">
+        <text>🗑️ 清空记录</text>
+      </button>
+    </view>
+
+    <!-- 记录列表 -->
+    <view class="history-list">
+      <view 
+        class="history-item" 
+        wx:for="{{history}}" 
+        wx:key="id"
+        bindtap="searchAgain"
+        data-keyword="{{item.keyword}}"
+      >
+        <view class="history-main">
+          <view class="history-icon">🔍</view>
+          <view class="history-info">
+            <view class="history-keyword">{{item.keyword}}</view>
+            <view class="history-meta">
+              <text class="history-time">{{item.searchTime}}</text>
+              <text class="history-dot">·</text>
+              <text class="history-count">{{item.resultCount}} 个结果</text>
+            </view>
+          </view>
+        </view>
+        <view class="history-actions">
+          <button class="action-btn" catchtap="deleteHistory" data-id="{{item.id}}">
+            <text>删除</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,58 +1,158 @@
-<!-- 关于页 -->
-<view class="about-page">
-  <view class="about-header">
-    <image class="avatar" src="/images/avatar.jpg" mode="aspectFill"></image>
-    <view class="name">汉克</view>
-    <view class="title">运营知识分享者</view>
-  </view>
-
-  <view class="about-content">
-    <view class="section">
-      <view class="section-title">关于我</view>
-      <view class="section-text">
-        我是汉克，专注于运营知识分享，帮助更多人建立运营体系，实现搞钱目标。
-        通过分享实战经验和系统方法论，帮助大家从0到1建立自己的运营体系。
+<!-- 个人中心页面 -->
+<view class="profile-page">
+  
+  <!-- 用户信息区域 -->
+  <view class="user-header">
+    <view class="user-info" wx:if="{{isLoggedIn}}">
+      <image class="avatar" src="{{userInfo.avatar || '/images/avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-details">
+        <view class="nickname">{{userInfo.nickname || '微信用户'}}</view>
+        <view class="user-id">ID: {{userInfo.id}}</view>
       </view>
     </view>
+    
+    <view class="login-prompt" wx:else>
+      <image class="avatar-placeholder" src="/images/avatar.png" mode="aspectFill"></image>
+      <view class="login-text">
+        <text class="prompt-title">您还未登录</text>
+        <text class="prompt-desc">登录后可查看我的资料包和搜索记录</text>
+      </view>
+      <button class="login-btn" bindtap="handleLogin">立即登录</button>
+    </view>
+  </view>
 
-    <view class="section">
-      <view class="section-title">我能提供</view>
-      <view class="feature-list">
-        <view class="feature-item">
-          <view class="feature-icon">📚</view>
-          <view class="feature-text">完整的运营知识体系</view>
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="section-title">我的内容</view>
+    
+    <view class="menu-list">
+      <view class="menu-item" bindtap="navigateToPackages">
+        <view class="menu-left">
+          <view class="menu-icon">📦</view>
+          <text class="menu-title">我的资料包</text>
         </view>
-        <view class="feature-item">
-          <view class="feature-icon">🛠️</view>
-          <view class="feature-text">实用的运营工具和模板</view>
+        <view class="menu-right">
+          <text class="menu-count" wx:if="{{packageCount > 0}}">{{packageCount}}</text>
+          <text class="menu-arrow">›</text>
         </view>
-        <view class="feature-item">
-          <view class="feature-icon">💡</view>
-          <view class="feature-text">经过验证的实战经验</view>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToHistory">
+        <view class="menu-left">
+          <view class="menu-icon">🔍</view>
+          <text class="menu-title">搜索记录</text>
         </view>
-        <view class="feature-item">
-          <view class="feature-icon">🎯</view>
-          <view class="feature-text">一对一运营咨询服务</view>
+        <view class="menu-right">
+          <text class="menu-count" wx:if="{{historyCount > 0}}">{{historyCount}}</text>
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToDownloads">
+        <view class="menu-left">
+          <view class="menu-icon">📥</view>
+          <text class="menu-title">下载记录</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-count" wx:if="{{downloadCount > 0}}">{{downloadCount}}</text>
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="menu-item" bindtap="navigateToFavorites">
+        <view class="menu-left">
+          <view class="menu-icon">⭐</view>
+          <text class="menu-title">我的收藏</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-count" wx:if="{{favoriteCount > 0}}">{{favoriteCount}}</text>
+          <text class="menu-arrow">›</text>
         </view>
       </view>
     </view>
+  </view>
 
-    <view class="section">
-      <view class="section-title">联系方式</view>
-      <button class="contact-btn" bindtap="showContactModal">
-        <text>📱 扫码添加微信</text>
-      </button>
+  <!-- 其他功能 -->
+  <view class="menu-section">
+    <view class="section-title">其他</view>
+    
+    <view class="menu-list">
+      <view class="menu-item" bindtap="navigateToSettings">
+        <view class="menu-left">
+          <view class="menu-icon">⚙️</view>
+          <text class="menu-title">设置</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="menu-item" bindtap="contactUs">
+        <view class="menu-left">
+          <view class="menu-icon">💬</view>
+          <text class="menu-title">联系我们</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="menu-item" bindtap="showAbout">
+        <view class="menu-left">
+          <view class="menu-icon">ℹ️</view>
+          <text class="menu-title">关于我们</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
     </view>
   </view>
-</view>
 
-<!-- 联系弹窗 -->
-<view class="contact-modal" wx:if="{{showContactModal}}" bindtap="hideContactModal">
-  <view class="modal-content" catchtap="stopPropagation">
-    <view class="modal-close" bindtap="hideContactModal">×</view>
-    <view class="modal-title">扫码添加微信</view>
-    <image class="qr-code" src="/images/wechat-qr.jpg" mode="aspectFit"></image>
-    <view class="qr-text">扫描二维码添加我的微信</view>
-    <view class="qr-hint">长按识别二维码</view>
+  <!-- 退出登录按钮 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+
+  <!-- 关于弹窗 -->
+  <view class="modal" wx:if="{{showAboutModal}}" bindtap="hideAbout">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">汉克运营知识库</text>
+        <text class="close-btn" bindtap="hideAbout">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="about-logo">
+          <image src="/images/logo.png" mode="aspectFit"></image>
+        </view>
+        <view class="about-title">汉克运营知识库·搞钱计划</view>
+        <view class="about-desc">建立自己的运营系统，搞到第一桶金</view>
+        <view class="about-info">
+          <view class="info-item">版本：v1.0.0</view>
+          <view class="info-item">作者：汉克</view>
+        </view>
+        <view class="about-qr">
+          <image src="/images/wechat-qr.jpg" mode="aspectFit"></image>
+          <text>扫码关注公众号</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系我们弹窗 -->
+  <view class="modal" wx:if="{{showContactModal}}" bindtap="hideContact">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">联系我们</text>
+        <text class="close-btn" bindtap="hideContact">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="contact-qr">
+          <image src="/images/wechat-qr.jpg" mode="aspectFit"></image>
+          <text class="qr-text">微信扫码添加</text>
+          <text class="qr-hint">工作时间：周一至周五 9:00-18:00</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

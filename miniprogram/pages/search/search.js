@@ -79,7 +79,51 @@ Page({
           icon: 'none'
         });
       }
+      
+      // 保存搜索记录
+      this.saveSearchHistory(keyword, results.length);
     }, 300);
+  },
+  
+  // 保存搜索记录
+  saveSearchHistory(keyword, resultCount) {
+    const history = wx.getStorageSync('search_history') || [];
+    
+    // 生成记录ID
+    const id = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    // 创建记录对象
+    const record = {
+      id: id,
+      keyword: keyword,
+      searchTime: this.formatTime(new Date()),
+      resultCount: resultCount
+    };
+    
+    // 检查是否已存在相同关键词（删除旧的）
+    const filteredHistory = history.filter(item => item.keyword !== keyword);
+    
+    // 添加新记录到开头
+    filteredHistory.unshift(record);
+    
+    // 只保留最近50条记录
+    if (filteredHistory.length > 50) {
+      filteredHistory.length = 50;
+    }
+    
+    // 保存到本地
+    wx.setStorageSync('search_history', filteredHistory);
+  },
+  
+  // 格式化时间
+  formatTime(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minute = String(date.getMinutes()).padStart(2, '0');
+    
+    return `${year}-${month}-${day} ${hour}:${minute}`;
   },
 
   // 搜索函数（与WordPress版本一致）
