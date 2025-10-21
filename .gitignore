@@ -79,3 +79,10 @@ config/database.yml
 !git-config-setup.md
 !ai-integration-guide.md
 !upload-resources-guide.md
+!wechat-login-integration.md
+!WECHAT-LOGIN-DEPLOY-GUIDE.md
+!DATA-SYNC-GUIDE.md
+!WECHAT-OPEN-PLATFORM-SETUP.md
+!QUICK-SETUP-CHECKLIST.md
+!wordpress-pages-setup.md
+!onepanel-pages-setup.md
