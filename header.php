@@ -39,19 +39,20 @@
                         'fallback_cb'    => function() {
                             echo '<ul class="nav-menu">';
                             echo '<li><a href="' . esc_url(home_url('/')) . '">首页</a></li>';
-                            echo '<li><a href="' . esc_url(home_url('/blog')) . '">文章</a></li>';
+                            echo '<li><a href="' . esc_url(home_url('/articles')) . '">文章</a></li>';
                             echo '<li><a href="' . esc_url(home_url('/resources')) . '">资源</a></li>';
+                            if (is_user_logged_in()) {
+                                $current_user = wp_get_current_user();
+                                $nickname = get_user_meta($current_user->ID, 'wechat_nickname', true);
+                                echo '<li class="menu-item-account"><a href="' . esc_url(home_url('/my-account')) . '">' . esc_html($nickname ?: '我的') . '</a></li>';
+                            } else {
+                                echo '<li class="menu-item-login"><a href="' . esc_url(home_url('/my-account')) . '">登录</a></li>';
+                            }
                             echo '</ul>';
                         },
                     ));
                     ?>
                 </nav>
-                
-                <div class="header-contact">
-                    <button class="contact-btn" onclick="openContactModal()">
-                        <?php echo esc_html(get_theme_mod('hero_cta_text', '联系我')); ?>
-                    </button>
-                </div>
 
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-controls="site-navigation" aria-expanded="false">
                     <span class="screen-reader-text">菜单</span>

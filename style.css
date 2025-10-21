@@ -1755,6 +1755,49 @@ p {
     background-color: #f8f9fa;
 }
 
+/* 悬浮联系按钮 */
+.floating-contact-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #991b1b 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 48px;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.floating-contact-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 16px;
+}
+
+/* 登录菜单项高亮 */
+.menu-item-login a,
+.menu-item-account a {
+    color: var(--color-primary) !important;
+    font-weight: 600;
+}
+
+.menu-item-account a:hover {
+    color: #991b1b !important;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .content-grid {
@@ -1787,6 +1830,17 @@ p {
     
     .demo-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* 移动端悬浮按钮调整 */
+    .floating-contact-btn {
+        bottom: 80px;
+        right: 20px;
+        padding: 14px 20px;
+    }
+    
+    .contact-text {
+        font-size: 14px;
     }
 }
 
