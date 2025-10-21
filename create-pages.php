@@ -64,6 +64,12 @@ $pages = array(
         'slug' => 'articles',
         'template' => 'articles.php',
         'content' => '文章列表页面，展示运营干货分享。'
+    ),
+    array(
+        'title' => '我的',
+        'slug' => 'my-account',
+        'template' => 'page-my-account.php',
+        'content' => '个人中心页面，支持资料包和搜索记录同步。'
     )
 );
 

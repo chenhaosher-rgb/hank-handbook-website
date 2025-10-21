@@ -46,6 +46,34 @@ add_action('rest_api_init', function() {
         'callback' => 'hank_wechat_sync_user_data',
         'permission_callback' => 'hank_wechat_check_permission'
     ));
+
+    // 获取与保存资料包
+    register_rest_route('hank-wechat/v1', '/packages', array(
+        array(
+            'methods' => 'GET',
+            'callback' => 'hank_wechat_get_packages',
+            'permission_callback' => 'hank_wechat_check_permission'
+        ),
+        array(
+            'methods' => 'POST',
+            'callback' => 'hank_wechat_save_packages',
+            'permission_callback' => 'hank_wechat_check_permission'
+        )
+    ));
+
+    // 获取与保存搜索记录
+    register_rest_route('hank-wechat/v1', '/search-history', array(
+        array(
+            'methods' => 'GET',
+            'callback' => 'hank_wechat_get_search_history',
+            'permission_callback' => 'hank_wechat_check_permission'
+        ),
+        array(
+            'methods' => 'POST',
+            'callback' => 'hank_wechat_save_search_history',
+            'permission_callback' => 'hank_wechat_check_permission'
+        )
+    ));
 });
 
 /**
@@ -253,6 +281,51 @@ function hank_wechat_sync_user_data($request) {
         'success' => true,
         'message' => '数据同步成功'
     );
+}
+
+/**
+ * 资料包 - 读取
+ */
+function hank_wechat_get_packages($request) {
+    $user_id = hank_wechat_get_current_user_id($request);
+    if (!$user_id) return new WP_Error('unauthorized', '未授权', array('status' => 401));
+    $data = get_user_meta($user_id, 'hank_packages', true);
+    return array('success' => true, 'packages' => $data ? $data : array());
+}
+
+/**
+ * 资料包 - 保存（全量覆盖）
+ */
+function hank_wechat_save_packages($request) {
+    $user_id = hank_wechat_get_current_user_id($request);
+    if (!$user_id) return new WP_Error('unauthorized', '未授权', array('status' => 401));
+    $packages = $request->get_param('packages');
+    if (!is_array($packages)) $packages = array();
+    update_user_meta($user_id, 'hank_packages', array_values($packages));
+    return array('success' => true);
+}
+
+/**
+ * 搜索记录 - 读取
+ */
+function hank_wechat_get_search_history($request) {
+    $user_id = hank_wechat_get_current_user_id($request);
+    if (!$user_id) return new WP_Error('unauthorized', '未授权', array('status' => 401));
+    $data = get_user_meta($user_id, 'hank_search_history', true);
+    return array('success' => true, 'history' => $data ? $data : array());
+}
+
+/**
+ * 搜索记录 - 保存（全量覆盖，最多50条）
+ */
+function hank_wechat_save_search_history($request) {
+    $user_id = hank_wechat_get_current_user_id($request);
+    if (!$user_id) return new WP_Error('unauthorized', '未授权', array('status' => 401));
+    $history = $request->get_param('history');
+    if (!is_array($history)) $history = array();
+    $history = array_slice(array_values($history), 0, 50);
+    update_user_meta($user_id, 'hank_search_history', $history);
+    return array('success' => true);
 }
 
 /**

@@ -1,6 +1,8 @@
 // pages/search/search.js
 // 引入搜索数据库
 const searchDatabase = require('../../utils/searchDatabase.js');
+const CloudSync = require('../../utils/cloudSync.js');
+const app = getApp();
 
 Page({
   data: {
@@ -113,6 +115,13 @@ Page({
     
     // 保存到本地
     wx.setStorageSync('search_history', filteredHistory);
+    
+    // 如果已登录，同步到云端
+    if (app.globalData.token) {
+      CloudSync.syncHistoryToCloud().catch(err => {
+        console.error('同步搜索记录失败:', err);
+      });
+    }
   },
   
   // 格式化时间
@@ -180,7 +189,7 @@ Page({
 
   // 下载资源
   downloadResource(e) {
-    const { url, name } = e.currentTarget.dataset;
+    const { url, name, title, description, tags } = e.currentTarget.dataset;
     
     wx.showLoading({ title: '准备下载...' });
 
@@ -216,6 +225,17 @@ Page({
                 title: '下载成功',
                 icon: 'success'
               });
+              
+              // 保存到我的资料包
+              this.saveToMyPackages({
+                id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                title: title || name || '资料包',
+                description: description || '',
+                icon: '📦',
+                tags: tags ? tags.split(',') : [],
+                downloadTime: this.formatTime(new Date()),
+                url: url
+              });
             },
             fail: () => {
               wx.showToast({
@@ -236,5 +256,24 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+  
+  // 保存到我的资料包
+  saveToMyPackages(packageData) {
+    const packages = wx.getStorageSync('my_packages') || [];
+    
+    // 检查是否已存在（避免重复）
+    const exists = packages.some(p => p.url === packageData.url);
+    if (!exists) {
+      packages.unshift(packageData);
+      wx.setStorageSync('my_packages', packages);
+      
+      // 同步到云端
+      if (app.globalData.token) {
+        CloudSync.syncPackagesToCloud().catch(err => {
+          console.error('同步资料包失败:', err);
+        });
+      }
+    }
   }
 });

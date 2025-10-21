@@ -1,5 +1,6 @@
 // 个人中心页面
 const app = getApp();
+const CloudSync = require('../../utils/cloudSync.js');
 
 Page({
   data: {
@@ -23,7 +24,25 @@ Page({
     // 加载用户数据
     if (this.data.isLoggedIn) {
       this.loadUserData();
+      // 从云端同步数据
+      this.syncFromCloud();
     }
+  },
+  
+  // 从云端同步数据
+  syncFromCloud() {
+    if (!app.globalData.token) return;
+    
+    Promise.all([
+      CloudSync.pullPackagesFromCloud(),
+      CloudSync.pullHistoryFromCloud()
+    ]).then(() => {
+      console.log('云端数据同步完成');
+      // 重新加载本地数据
+      this.loadUserData();
+    }).catch(err => {
+      console.error('云端同步失败:', err);
+    });
   },
 
   // 检查登录状态

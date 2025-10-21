@@ -11,7 +11,12 @@
     "pages/growth-handbook/growth-handbook",
     "pages/monetization-guide/monetization-guide",
     "pages/data-analysis/data-analysis",
-    "pages/case-library/case-library"
+    "pages/case-library/case-library",
+    "pages/my-packages/my-packages",
+    "pages/search-history/search-history",
+    "pages/downloads/downloads",
+    "pages/favorites/favorites",
+    "pages/settings/settings"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,7 +45,7 @@
       },
       {
         "pagePath": "pages/about/about",
-        "text": "关于"
+        "text": "我的"
       }
     ]
   },

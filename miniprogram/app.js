@@ -1,4 +1,6 @@
 // app.js
+const CloudSync = require('./utils/cloudSync.js');
+
 App({
   globalData: {
     userInfo: null,
@@ -153,6 +155,12 @@ App({
   triggerLoginSuccess(userInfo) {
     // 可以在这里处理登录成功后的逻辑
     console.log('登录成功，用户信息:', userInfo);
+    
+    // 登录成功后，执行完整数据同步
+    console.log('开始执行云端数据同步...');
+    CloudSync.fullSync().catch(err => {
+      console.error('云端同步失败:', err);
+    });
     
     // 发送自定义事件通知其他页面
     if (typeof this.loginSuccessCallback === 'function') {
