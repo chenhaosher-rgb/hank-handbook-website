@@ -26,19 +26,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
       },
       {
         "pagePath": "pages/library/library",
-        "text": "资料库"
+        "text": "资料库",
+        "iconPath": "images/library.png",
+        "selectedIconPath": "images/library-active.png"
       },
       {
         "pagePath": "pages/search/search",
-        "text": "搜索"
+        "text": "搜索",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
       }
     ]
   },
