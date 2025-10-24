@@ -27,26 +27,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/home.svg",
-        "selectedIconPath": "images/home-active.svg"
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
       },
       {
         "pagePath": "pages/library/library",
         "text": "资料库",
-        "iconPath": "images/library.svg",
-        "selectedIconPath": "images/library-active.svg"
+        "iconPath": "images/library.png",
+        "selectedIconPath": "images/library-active.png"
       },
       {
         "pagePath": "pages/search/search",
         "text": "搜索",
-        "iconPath": "images/search.svg",
-        "selectedIconPath": "images/search-active.svg"
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-active.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "images/user.svg",
-        "selectedIconPath": "images/user-active.svg"
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
       }
     ]
   },
