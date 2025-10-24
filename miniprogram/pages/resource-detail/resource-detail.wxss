@@ -1,0 +1,275 @@
+/* pages/resource-detail/resource-detail.wxss */
+.resource-detail-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+/* 资源头部 */
+.resource-header {
+  background: #fff;
+  padding: 40rpx 30rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.resource-icon {
+  font-size: 80rpx;
+  margin-right: 30rpx;
+}
+
+.resource-info {
+  flex: 1;
+}
+
+.resource-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.resource-category {
+  font-size: 24rpx;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  display: inline-block;
+}
+
+.resource-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.download-count,
+.resource-size,
+.resource-type {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 资源描述 */
+.resource-description {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.description-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.description-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 资源内容 */
+.resource-content {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.content-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.content-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.content-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.content-text {
+  font-size: 26rpx;
+  color: #666;
+  flex: 1;
+}
+
+/* 适用人群 */
+.target-audience {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.audience-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.audience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.audience-tag {
+  background: #dc2626;
+  color: #fff;
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+/* 相关推荐 */
+.related-resources {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.related-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.related-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  transition: background-color 0.3s ease;
+}
+
+.related-item:active {
+  background: #e9ecef;
+}
+
+.related-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.related-info {
+  flex: 1;
+}
+
+.related-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.related-desc {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+/* 底部操作栏 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  border: none;
+  font-size: 24rpx;
+  transition: all 0.3s ease;
+}
+
+.preview-btn {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.preview-btn:active {
+  background: #e9ecef;
+}
+
+.download-btn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.download-btn:active {
+  background: #991b1b;
+}
+
+.favorite-btn {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.favorite-btn.favorited {
+  background: #dc2626;
+  color: #fff;
+}
+
+.favorite-btn:active {
+  background: #e9ecef;
+}
+
+.favorite-btn.favorited:active {
+  background: #991b1b;
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+
+.btn-text {
+  font-size: 22rpx;
+  font-weight: 500;
+}

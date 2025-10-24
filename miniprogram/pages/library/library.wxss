@@ -1,0 +1,281 @@
+/* pages/library/library.wxss */
+.library-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 搜索头部 */
+.search-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  padding: 20rpx 30rpx 30rpx;
+}
+
+.search-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10rpx);
+}
+
+.search-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28rpx;
+}
+
+/* 分类导航 */
+.category-nav {
+  background: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.category-scroll {
+  white-space: nowrap;
+}
+
+.category-list {
+  display: flex;
+  padding: 0 30rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.category-item.active {
+  background: #dc2626;
+  color: #fff;
+}
+
+.category-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.category-name {
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 章节标题 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #dc2626;
+}
+
+.section-count {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 热门推荐 */
+.hot-resources {
+  background: #fff;
+  padding: 0 30rpx 30rpx;
+}
+
+.resource-card {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.resource-badge {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.resource-icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.resource-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.resource-desc {
+  font-size: 26rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.resource-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.download-count {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.resource-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+}
+
+/* 资源网格 */
+.resource-grid {
+  background: #fff;
+  padding: 0 30rpx 30rpx;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.resource-item {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.resource-item:active {
+  transform: scale(0.98);
+}
+
+.resource-cover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 30rpx;
+  text-align: center;
+  position: relative;
+}
+
+.resource-icon {
+  font-size: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.resource-type {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background: #dc2626;
+  color: #fff;
+  padding: 4rpx 8rpx;
+  border-radius: 8rpx;
+  font-size: 20rpx;
+}
+
+.resource-content {
+  padding: 20rpx;
+}
+
+.resource-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resource-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resource-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.download-count {
+  font-size: 22rpx;
+  color: #dc2626;
+}
+
+.resource-size {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 加载更多 */
+.load-more {
+  text-align: center;
+  padding: 40rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.load-text {
+  color: #dc2626;
+  font-size: 28rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 100rpx 30rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+}

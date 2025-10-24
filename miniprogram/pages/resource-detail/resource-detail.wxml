@@ -1,0 +1,87 @@
+<!--pages/resource-detail/resource-detail.wxml-->
+<view class="resource-detail-container">
+  <!-- 资源头部 -->
+  <view class="resource-header">
+    <view class="resource-icon">{{resource.icon}}</view>
+    <view class="resource-info">
+      <text class="resource-title">{{resource.title}}</text>
+      <text class="resource-category">{{resource.category}}</text>
+      <view class="resource-meta">
+        <text class="download-count">📥 {{resource.downloads}} 次下载</text>
+        <text class="resource-size">📦 {{resource.size}}</text>
+        <text class="resource-type">📄 {{resource.type}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 资源描述 -->
+  <view class="resource-description">
+    <text class="description-title">📝 资源介绍</text>
+    <text class="description-content">{{resource.description}}</text>
+  </view>
+
+  <!-- 资源内容 -->
+  <view class="resource-content">
+    <text class="content-title">📚 包含内容</text>
+    <view class="content-list">
+      <view 
+        class="content-item"
+        wx:for="{{resource.contentList}}" 
+        wx:key="index"
+      >
+        <text class="content-icon">{{item.icon}}</text>
+        <text class="content-text">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 适用人群 -->
+  <view class="target-audience">
+    <text class="audience-title">🎯 适用人群</text>
+    <view class="audience-tags">
+      <text 
+        class="audience-tag"
+        wx:for="{{resource.targetAudience}}" 
+        wx:key="index"
+      >
+        {{item}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 相关推荐 -->
+  <view class="related-resources">
+    <text class="related-title">🔗 相关推荐</text>
+    <view class="related-list">
+      <view 
+        class="related-item"
+        wx:for="{{relatedResources}}" 
+        wx:key="id"
+        bindtap="viewRelatedResource"
+        data-id="{{item.id}}"
+      >
+        <view class="related-icon">{{item.icon}}</view>
+        <view class="related-info">
+          <text class="related-name">{{item.title}}</text>
+          <text class="related-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <button class="action-btn preview-btn" bindtap="previewResource">
+      <text class="btn-icon">👁️</text>
+      <text class="btn-text">预览</text>
+    </button>
+    <button class="action-btn download-btn" bindtap="downloadResource">
+      <text class="btn-icon">📥</text>
+      <text class="btn-text">下载</text>
+    </button>
+    <button class="action-btn favorite-btn {{isFavorited ? 'favorited' : ''}}" bindtap="toggleFavorite">
+      <text class="btn-icon">{{isFavorited ? '❤️' : '🤍'}}</text>
+      <text class="btn-text">{{isFavorited ? '已收藏' : '收藏'}}</text>
+    </button>
+  </view>
+</view>

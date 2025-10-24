@@ -1,27 +1,20 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/articles/articles",
-    "pages/article-detail/article-detail",
-    "pages/resources/resources",
+    "pages/library/library",
+    "pages/category/category",
+    "pages/resource-detail/resource-detail",
     "pages/search/search",
-    "pages/about/about",
-    "pages/knowledge-base/knowledge-base",
-    "pages/content-toolbox/content-toolbox",
-    "pages/growth-handbook/growth-handbook",
-    "pages/monetization-guide/monetization-guide",
-    "pages/data-analysis/data-analysis",
-    "pages/case-library/case-library",
-    "pages/my-packages/my-packages",
-    "pages/search-history/search-history",
+    "pages/my/my",
     "pages/downloads/downloads",
     "pages/favorites/favorites",
-    "pages/settings/settings"
+    "pages/history/history",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#dc2626",
-    "navigationBarTitleText": "汉克运营知识库",
+    "navigationBarBackgroundColor": "#1a1a1a",
+    "navigationBarTitleText": "汉克运营资料库",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f5f5f5"
   },
@@ -33,19 +26,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/articles/articles",
-        "text": "文章"
+        "pagePath": "pages/library/library",
+        "text": "资料库",
+        "iconPath": "images/library.png",
+        "selectedIconPath": "images/library-active.png"
       },
       {
-        "pagePath": "pages/resources/resources",
-        "text": "资源"
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-active.png"
       },
       {
-        "pagePath": "pages/about/about",
-        "text": "我的"
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
       }
     ]
   },
@@ -53,6 +54,5 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": false,
   "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,156 @@
+<!--pages/my/my.wxml-->
+<view class="my-container">
+  <!-- 用户信息头部 -->
+  <view class="user-header">
+    <view class="user-avatar">
+      <image wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" class="avatar-img"></image>
+      <text wx:else class="avatar-placeholder">👤</text>
+    </view>
+    <view class="user-info">
+      <text class="user-name">{{userInfo.nickName || '未登录用户'}}</text>
+      <text class="user-level">{{userInfo.level || '普通用户'}}</text>
+    </view>
+    <view class="login-btn" wx:if="{{!isLoggedIn}}" bindtap="handleLogin">
+      <text>登录</text>
+    </view>
+  </view>
+
+  <!-- 学习统计 -->
+  <view class="study-stats">
+    <view class="stats-title">📊 学习统计</view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">{{studyStats.downloadCount}}</text>
+        <text class="stat-label">已下载</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{studyStats.studyDays}}</text>
+        <text class="stat-label">学习天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{studyStats.favoriteCount}}</text>
+        <text class="stat-label">收藏数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{studyStats.searchCount}}</text>
+        <text class="stat-label">搜索次数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的功能 -->
+  <view class="my-functions">
+    <view class="function-item" bindtap="navigateToDownloads">
+      <view class="function-icon">📥</view>
+      <view class="function-info">
+        <text class="function-title">我的下载</text>
+        <text class="function-desc">{{downloads.length}}个资料</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateToFavorites">
+      <view class="function-icon">❤️</view>
+      <view class="function-info">
+        <text class="function-title">我的收藏</text>
+        <text class="function-desc">{{favorites.length}}个资料</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateToHistory">
+      <view class="function-icon">🕒</view>
+      <view class="function-info">
+        <text class="function-title">学习历史</text>
+        <text class="function-desc">{{history.length}}条记录</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateToProfile">
+      <view class="function-icon">👤</view>
+      <view class="function-info">
+        <text class="function-title">个人资料</text>
+        <text class="function-desc">编辑个人信息</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
+  </view>
+
+  <!-- 学习进度 -->
+  <view class="learning-progress">
+    <view class="progress-title">🎯 学习进度</view>
+    <view class="progress-list">
+      <view 
+        class="progress-item"
+        wx:for="{{learningProgress}}" 
+        wx:key="id"
+        bindtap="viewProgress"
+        data-id="{{item.id}}"
+      >
+        <view class="progress-icon">{{item.icon}}</view>
+        <view class="progress-info">
+          <text class="progress-name">{{item.name}}</text>
+          <text class="progress-desc">{{item.description}}</text>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.progress}}%"></view>
+          </view>
+          <text class="progress-text">{{item.completed}}/{{item.total}} 完成</text>
+        </view>
+        <text class="progress-percent">{{item.progress}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置选项 -->
+  <view class="settings">
+    <view class="setting-item" bindtap="showAbout">
+      <view class="setting-icon">ℹ️</view>
+      <text class="setting-title">关于我们</text>
+      <text class="setting-arrow">></text>
+    </view>
+    
+    <view class="setting-item" bindtap="showFeedback">
+      <view class="setting-icon">💬</view>
+      <text class="setting-title">意见反馈</text>
+      <text class="setting-arrow">></text>
+    </view>
+    
+    <view class="setting-item" bindtap="showContact">
+      <view class="setting-icon">📱</view>
+      <text class="setting-title">联系我们</text>
+      <text class="setting-arrow">></text>
+    </view>
+    
+    <view class="setting-item" wx:if="{{isLoggedIn}}" bindtap="handleLogout">
+      <view class="setting-icon">🚪</view>
+      <text class="setting-title">退出登录</text>
+      <text class="setting-arrow">></text>
+    </view>
+  </view>
+</view>
+
+<!-- 关于我们弹窗 -->
+<view class="modal" wx:if="{{showAboutModal}}" bindtap="hideAboutModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-close" bindtap="hideAboutModal">×</view>
+    <view class="modal-title">关于汉克运营资料库</view>
+    <view class="modal-text">
+      汉克运营资料库是一个专业的运营知识分享平台，致力于为运营从业者提供高质量的运营资料和学习资源。
+    </view>
+    <view class="modal-text">
+      我们相信，通过系统化的学习和实践，每个人都能成为优秀的运营专家。
+    </view>
+  </view>
+</view>
+
+<!-- 联系我们弹窗 -->
+<view class="modal" wx:if="{{showContactModal}}" bindtap="hideContactModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-close" bindtap="hideContactModal">×</view>
+    <view class="modal-title">联系我们</view>
+    <image class="qr-code" src="/images/wechat-qr.jpg" mode="aspectFit"></image>
+    <view class="qr-text">扫描二维码添加微信</view>
+    <view class="qr-hint">备注：运营资料库</view>
+  </view>
+</view>

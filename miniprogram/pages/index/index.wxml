@@ -1,114 +1,133 @@
-<!-- 首页 -->
-<view class="index-page">
-  <!-- 头部 Hero -->
-  <view class="hero-section">
-    <view class="hero-content">
-      <view class="hero-badge">汉克运营知识库</view>
-      <view class="hero-title">汉克运营知识库·搞钱计划</view>
-      <view class="hero-description">建立自己的运营系统，搞到第一桶金</view>
-      <button class="hero-btn" bindtap="navigateToSearch">
-        <text>🔍 搜索运营解决方案</text>
-      </button>
-    </view>
-  </view>
-
-  <!-- 搜索快捷入口 -->
-  <view class="search-section">
-    <view class="search-title">快速搜索</view>
-    <view class="search-tags">
-      <view 
-        class="search-tag" 
-        wx:for="{{popularTags}}" 
-        wx:key="index"
-        bindtap="searchByTag"
-        data-tag="{{item}}"
-      >
-        {{item}}
-      </view>
-    </view>
-  </view>
-
-  <!-- 资源推荐 -->
-  <view class="resources-section">
-    <view class="section-header">
-      <view class="section-title">精选资源</view>
-      <view class="section-more" bindtap="navigateToResources">
-        <text>查看全部</text>
-        <text class="arrow">→</text>
-      </view>
-    </view>
-    
-    <view class="resources-grid">
-      <view 
-        class="resource-card {{item.highlight ? 'highlight' : ''}}"
-        wx:for="{{resources}}" 
-        wx:key="id"
-        bindtap="viewResource"
-        data-id="{{item.id}}"
-      >
-        <view class="resource-icon">{{item.icon}}</view>
-        <view class="resource-title">{{item.title}}</view>
-        <view class="resource-description">{{item.description}}</view>
-        <view class="resource-meta">
-          <text class="resource-count">{{item.downloads}} 次下载</text>
+<!--pages/index/index.wxml-->
+<view class="index-container">
+  <!-- 顶部横幅 -->
+  <view class="hero-banner">
+    <view class="banner-content">
+      <text class="banner-title">汉克运营资料库</text>
+      <text class="banner-subtitle">专业的运营知识库，助力你的成长之路</text>
+      <view class="banner-stats">
+        <view class="stat-item">
+          <text class="stat-number">500+</text>
+          <text class="stat-label">精品资料</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">50K+</text>
+          <text class="stat-label">用户下载</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">98%</text>
+          <text class="stat-label">好评率</text>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 最新文章 -->
-  <view class="articles-section">
-    <view class="section-header">
-      <view class="section-title">最新文章</view>
-      <view class="section-more" bindtap="navigateToArticles">
-        <text>查看全部</text>
-        <text class="arrow">→</text>
-      </view>
+  <!-- 快速搜索 -->
+  <view class="quick-search">
+    <view class="search-bar" bindtap="navigateToSearch">
+      <text class="search-placeholder">🔍 搜索运营资料...</text>
     </view>
-    
-    <view class="articles-list">
+  </view>
+
+  <!-- 热门分类 -->
+  <view class="hot-categories">
+    <text class="section-title">🔥 热门分类</text>
+    <view class="category-grid">
       <view 
-        class="article-card"
-        wx:for="{{articles}}" 
+        class="category-card"
+        wx:for="{{hotCategories}}" 
         wx:key="id"
-        bindtap="viewArticle"
+        bindtap="navigateToCategory"
         data-id="{{item.id}}"
       >
-        <image class="article-image" src="{{item.image}}" mode="aspectFill"></image>
-        <view class="article-content">
-          <view class="article-badge">{{item.category}}</view>
-          <view class="article-title">{{item.title}}</view>
-          <view class="article-excerpt">{{item.excerpt}}</view>
-          <view class="article-meta">
-            <text class="article-date">{{item.date}}</text>
-            <text class="article-views">{{item.views}} 阅读</text>
+        <view class="category-icon">{{item.icon}}</view>
+        <text class="category-name">{{item.name}}</text>
+        <text class="category-count">{{item.count}}个资料</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日推荐 -->
+  <view class="today-recommend">
+    <view class="section-header">
+      <text class="section-title">⭐ 今日推荐</text>
+      <text class="section-more" bindtap="viewAllRecommend">查看全部</text>
+    </view>
+    <view class="recommend-list">
+      <view 
+        class="recommend-item"
+        wx:for="{{todayRecommend}}" 
+        wx:key="id"
+        bindtap="viewResource"
+        data-id="{{item.id}}"
+      >
+        <view class="recommend-cover">
+          <view class="recommend-icon">{{item.icon}}</view>
+          <view class="recommend-badge">{{item.badge}}</view>
+        </view>
+        <view class="recommend-info">
+          <text class="recommend-title">{{item.title}}</text>
+          <text class="recommend-desc">{{item.description}}</text>
+          <view class="recommend-meta">
+            <text class="download-count">📥 {{item.downloads}}</text>
+            <text class="recommend-tag">{{item.tag}}</text>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 关于我 -->
-  <view class="about-section">
-    <view class="about-content">
-      <view class="about-title">关于汉克</view>
-      <view class="about-text">
-        我是汉克，专注于运营知识分享，帮助更多人建立运营体系，实现搞钱目标。
+  <!-- 最新资料 -->
+  <view class="latest-resources">
+    <view class="section-header">
+      <text class="section-title">🆕 最新资料</text>
+      <text class="section-more" bindtap="navigateToLibrary">进入资料库</text>
+    </view>
+    <view class="resource-list">
+      <view 
+        class="resource-item"
+        wx:for="{{latestResources}}" 
+        wx:key="id"
+        bindtap="viewResource"
+        data-id="{{item.id}}"
+      >
+        <view class="resource-icon">{{item.icon}}</view>
+        <view class="resource-content">
+          <text class="resource-title">{{item.title}}</text>
+          <text class="resource-desc">{{item.description}}</text>
+          <view class="resource-footer">
+            <text class="resource-time">{{item.time}}</text>
+            <text class="resource-downloads">📥 {{item.downloads}}</text>
+          </view>
+        </view>
       </view>
-      <button class="contact-btn" bindtap="showContactModal">
-        <text>📱 联系我</text>
-      </button>
     </view>
   </view>
-</view>
 
-<!-- 联系弹窗 -->
-<view class="contact-modal" wx:if="{{showContactModal}}" bindtap="hideContactModal">
-  <view class="modal-content" catchtap="stopPropagation">
-    <view class="modal-close" bindtap="hideContactModal">×</view>
-    <view class="modal-title">扫码添加微信</view>
-    <image class="qr-code" src="/images/wechat-qr.jpg" mode="aspectFit"></image>
-    <view class="qr-text">扫描二维码添加我的微信</view>
-    <view class="qr-hint">长按识别二维码</view>
+  <!-- 学习路径 -->
+  <view class="learning-path">
+    <text class="section-title">🎯 学习路径</text>
+    <view class="path-list">
+      <view 
+        class="path-item"
+        wx:for="{{learningPaths}}" 
+        wx:key="id"
+        bindtap="viewPath"
+        data-id="{{item.id}}"
+      >
+        <view class="path-icon">{{item.icon}}</view>
+        <view class="path-info">
+          <text class="path-title">{{item.title}}</text>
+          <text class="path-desc">{{item.description}}</text>
+          <view class="path-progress">
+            <text class="progress-text">{{item.progress}}</text>
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{item.progressPercent}}%"></view>
+            </view>
+          </view>
+        </view>
+        <view class="path-arrow">→</view>
+      </view>
+    </view>
   </view>
 </view>

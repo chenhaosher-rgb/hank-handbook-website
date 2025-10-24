@@ -1,0 +1,348 @@
+/* pages/my/my.wxss */
+.my-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 用户信息头部 */
+.user-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  padding: 40rpx 30rpx;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30rpx;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-placeholder {
+  font-size: 60rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.user-level {
+  font-size: 24rpx;
+  opacity: 0.8;
+  display: block;
+}
+
+.login-btn {
+  background: #dc2626;
+  color: #fff;
+  padding: 20rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+/* 学习统计 */
+.study-stats {
+  background: #fff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #dc2626;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #666;
+  display: block;
+}
+
+/* 我的功能 */
+.my-functions {
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.function-item:last-child {
+  border-bottom: none;
+}
+
+.function-item:active {
+  background: #f8f9fa;
+}
+
+.function-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.function-info {
+  flex: 1;
+}
+
+.function-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.function-desc {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+.function-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 学习进度 */
+.learning-progress {
+  background: #fff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+
+.progress-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+}
+
+.progress-item:active {
+  background: #e9ecef;
+  transform: scale(0.98);
+}
+
+.progress-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.progress-info {
+  flex: 1;
+}
+
+.progress-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.progress-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.progress-bar {
+  height: 8rpx;
+  background: #e9ecef;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #dc2626;
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 22rpx;
+  color: #666;
+  display: block;
+}
+
+.progress-percent {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #dc2626;
+  margin-left: 20rpx;
+}
+
+/* 设置选项 */
+.settings {
+  background: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item:active {
+  background: #f8f9fa;
+}
+
+.setting-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.setting-title {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1a1a1a;
+}
+
+.setting-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin: 40rpx;
+  max-width: 600rpx;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 40rpx;
+  color: #999;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.modal-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.qr-code {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 30rpx auto;
+  display: block;
+}
+
+.qr-text {
+  font-size: 28rpx;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.qr-hint {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}

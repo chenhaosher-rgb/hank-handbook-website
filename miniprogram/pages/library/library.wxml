@@ -1,0 +1,95 @@
+<!--pages/library/library.wxml-->
+<view class="library-container">
+  <!-- 顶部搜索栏 -->
+  <view class="search-header">
+    <view class="search-bar" bindtap="navigateToSearch">
+      <text class="search-placeholder">🔍 搜索运营资料...</text>
+    </view>
+  </view>
+
+  <!-- 分类导航 -->
+  <view class="category-nav">
+    <scroll-view class="category-scroll" scroll-x="true">
+      <view class="category-list">
+        <view 
+          class="category-item {{currentCategory === item.id ? 'active' : ''}}"
+          wx:for="{{categories}}" 
+          wx:key="id"
+          bindtap="switchCategory"
+          data-id="{{item.id}}"
+        >
+          <view class="category-icon">{{item.icon}}</view>
+          <text class="category-name">{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 热门推荐 -->
+  <view class="section-header">
+    <text class="section-title">🔥 热门推荐</text>
+    <text class="section-more" bindtap="viewAllHot">查看全部</text>
+  </view>
+
+  <view class="hot-resources">
+    <view 
+      class="resource-card hot-card"
+      wx:for="{{hotResources}}" 
+      wx:key="id"
+      bindtap="viewResource"
+      data-id="{{item.id}}"
+    >
+      <view class="resource-badge">热门</view>
+      <view class="resource-icon">{{item.icon}}</view>
+      <view class="resource-info">
+        <text class="resource-title">{{item.title}}</text>
+        <text class="resource-desc">{{item.description}}</text>
+        <view class="resource-meta">
+          <text class="download-count">📥 {{item.downloads}}</text>
+          <text class="resource-tag">{{item.tag}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类内容 -->
+  <view class="section-header">
+    <text class="section-title">{{currentCategoryName}}</text>
+    <text class="section-count">{{categoryResources.length}}个资料</text>
+  </view>
+
+  <view class="resource-grid">
+    <view 
+      class="resource-item"
+      wx:for="{{categoryResources}}" 
+      wx:key="id"
+      bindtap="viewResource"
+      data-id="{{item.id}}"
+    >
+      <view class="resource-cover">
+        <view class="resource-icon">{{item.icon}}</view>
+        <view class="resource-type">{{item.type}}</view>
+      </view>
+      <view class="resource-content">
+        <text class="resource-title">{{item.title}}</text>
+        <text class="resource-desc">{{item.description}}</text>
+        <view class="resource-footer">
+          <text class="download-count">📥 {{item.downloads}}</text>
+          <text class="resource-size">{{item.size}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="loadMore">
+    <text class="load-text">加载更多</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{categoryResources.length === 0}}">
+    <text class="empty-icon">📚</text>
+    <text class="empty-text">暂无资料</text>
+    <text class="empty-desc">该分类下还没有资料，敬请期待</text>
+  </view>
+</view>

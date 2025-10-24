@@ -1,210 +1,168 @@
 // pages/index/index.js
+const app = getApp();
+
 Page({
   data: {
-    showContactModal: false,
-    popularTags: [
-      '用户增长',
-      '内容创作',
-      '变现策略',
-      '私域运营',
-      '社交媒体',
-      '数据分析'
+    hotCategories: [
+      { id: 'growth', name: '用户增长', icon: '📈', count: 45 },
+      { id: 'content', name: '内容创作', icon: '✍️', count: 38 },
+      { id: 'monetization', name: '变现策略', icon: '💰', count: 32 },
+      { id: 'data', name: '数据分析', icon: '📊', count: 28 },
+      { id: 'community', name: '社群运营', icon: '👥', count: 25 },
+      { id: 'brand', name: '品牌建设', icon: '🏷️', count: 22 }
     ],
-    resources: [
+    todayRecommend: [
       {
-        id: 'knowledge-base',
-        icon: '📚',
-        title: '运营知识库 VIP',
-        description: '完整的运营体系和实战经验',
-        downloads: 1234,
-        highlight: true
-      },
-      {
-        id: 'content-toolbox',
-        icon: '🛠️',
-        title: '内容创作工具箱',
-        description: '30+ 实用工具和模板',
-        downloads: 856
-      },
-      {
-        id: 'growth-handbook',
+        id: 'growth-guide',
         icon: '📈',
-        title: '用户增长手册',
-        description: '从 0 到 10 万粉丝的完整路径',
-        downloads: 2341
+        title: '用户增长完整指南',
+        description: '从0到10万粉丝的完整增长策略',
+        downloads: '12.5K',
+        tag: '用户增长',
+        badge: '热门'
       },
       {
-        id: 'monetization-guide',
+        id: 'content-formula',
+        icon: '✍️',
+        title: '爆款内容创作公式',
+        description: '30+内容模板，轻松创作爆款内容',
+        downloads: '8.9K',
+        tag: '内容创作',
+        badge: '推荐'
+      },
+      {
+        id: 'monetization-methods',
         icon: '💰',
-        title: '变现策略指南',
-        description: '7 种可复制的变现模式',
-        downloads: 1567
-      },
-      {
-        id: 'data-analysis',
-        icon: '📊',
-        title: '数据分析工具',
-        description: '运营必备的数据分析模板和工具',
-        downloads: 982
-      },
-      {
-        id: 'case-library',
-        icon: '📋',
-        title: '运营案例库',
-        description: '100+ 成功运营案例拆解',
-        downloads: 1876
+        title: '7种变现模式详解',
+        description: '从知识付费到电商带货的完整路径',
+        downloads: '15.2K',
+        tag: '变现策略',
+        badge: '精选'
       }
     ],
-    articles: [
+    latestResources: [
       {
-        id: 1,
-        title: '运营知识库完整体系',
-        excerpt: '如何建立自己的运营知识库，从信息收集到知识沉淀的完整流程...',
-        image: '/images/article-1.jpg',
-        category: '运营体系',
-        date: '2024-01-15',
-        views: 3245
+        id: 'data-analysis-tool',
+        icon: '📊',
+        title: '运营数据分析工具包',
+        description: '包含Excel模板和数据分析方法',
+        time: '2小时前',
+        downloads: '1.2K'
       },
       {
-        id: 2,
-        title: '从 0 到 10 万粉丝的增长策略',
-        excerpt: '分享我如何在 6 个月内从 0 增长到 10 万粉丝的完整策略和执行细节...',
-        image: '/images/article-2.jpg',
-        category: '用户增长',
-        date: '2024-01-10',
-        views: 5678
+        id: 'community-guide',
+        icon: '👥',
+        title: '社群运营实战手册',
+        description: '社群搭建、运营、变现全流程',
+        time: '5小时前',
+        downloads: '856'
       },
       {
-        id: 3,
-        title: '内容创作的底层逻辑',
-        excerpt: '深度解析什么样的内容能够吸引用户，如何创作高质量内容...',
-        image: '/images/article-3.jpg',
-        category: '内容创作',
-        date: '2024-01-05',
-        views: 2890
+        id: 'brand-strategy',
+        icon: '🏷️',
+        title: '个人品牌建设指南',
+        description: '从定位到推广的完整品牌策略',
+        time: '1天前',
+        downloads: '2.1K'
+      }
+    ],
+    learningPaths: [
+      {
+        id: 'beginner-path',
+        icon: '🌱',
+        title: '运营新手入门',
+        description: '适合零基础运营新手',
+        progress: '0/8 完成',
+        progressPercent: 0
+      },
+      {
+        id: 'growth-path',
+        icon: '📈',
+        title: '用户增长专家',
+        description: '深度掌握用户增长策略',
+        progress: '3/12 完成',
+        progressPercent: 25
+      },
+      {
+        id: 'monetization-path',
+        icon: '💰',
+        title: '变现策略大师',
+        description: '掌握多种变现模式',
+        progress: '5/10 完成',
+        progressPercent: 50
       }
     ]
   },
 
   onLoad() {
-    // 页面加载时执行
-    this.loadData();
+    console.log('资料库首页加载');
   },
 
   onShow() {
-    // 页面显示时执行
+    // 页面显示时刷新数据
   },
 
-  onShareAppMessage() {
-    return {
-      title: '汉克运营知识库·搞钱计划',
-      path: '/pages/index/index',
-      imageUrl: '/images/share-cover.jpg'
-    };
-  },
-
-  onShareTimeline() {
-    return {
-      title: '汉克运营知识库·搞钱计划',
-      query: '',
-      imageUrl: '/images/share-cover.jpg'
-    };
-  },
-
-  // 加载数据
-  loadData() {
-    // 如果需要从 WordPress API 加载数据
-    // 可以在这里调用 API
-    // const app = getApp();
-    // wx.request({
-    //   url: `${app.globalData.apiBaseUrl}/posts`,
-    //   success: (res) => {
-    //     this.setData({
-    //       articles: res.data
-    //     });
-    //   }
-    // });
-  },
-
-  // 导航到搜索页
+  // 导航到搜索
   navigateToSearch() {
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/search/search'
     });
   },
 
-  // 按标签搜索
-  searchByTag(e) {
-    const tag = e.currentTarget.dataset.tag;
+  // 导航到分类
+  navigateToCategory(e) {
+    const categoryId = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/search/search?keyword=${tag}`
-    });
-  },
-
-  // 导航到资源页
-  navigateToResources() {
-    wx.switchTab({
-      url: '/pages/resources/resources'
+      url: `/pages/category/category?id=${categoryId}`
     });
   },
 
   // 查看资源详情
   viewResource(e) {
-    const id = e.currentTarget.dataset.id;
-    
-    // 根据资源ID跳转到对应页面
-    const pageMap = {
-      'knowledge-base': '/pages/knowledge-base/knowledge-base',
-      'content-toolbox': '/pages/content-toolbox/content-toolbox',
-      'growth-handbook': '/pages/growth-handbook/growth-handbook',
-      'monetization-guide': '/pages/monetization-guide/monetization-guide',
-      'data-analysis': '/pages/data-analysis/data-analysis',
-      'case-library': '/pages/case-library/case-library'
-    };
-    
-    if (pageMap[id]) {
-      wx.navigateTo({
-        url: pageMap[id]
-      });
-    } else {
-      wx.showToast({
-        title: '页面开发中',
-        icon: 'none'
-      });
-    }
-  },
-
-  // 导航到文章页
-  navigateToArticles() {
-    wx.switchTab({
-      url: '/pages/articles/articles'
-    });
-  },
-
-  // 查看文章详情
-  viewArticle(e) {
-    const id = e.currentTarget.dataset.id;
+    const resourceId = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/article-detail/article-detail?id=${id}`
+      url: `/pages/resource-detail/resource-detail?id=${resourceId}`
     });
   },
 
-  // 显示联系弹窗
-  showContactModal() {
-    this.setData({
-      showContactModal: true
+  // 查看全部推荐
+  viewAllRecommend() {
+    wx.switchTab({
+      url: '/pages/library/library'
     });
   },
 
-  // 隐藏联系弹窗
-  hideContactModal() {
-    this.setData({
-      showContactModal: false
+  // 导航到资料库
+  navigateToLibrary() {
+    wx.switchTab({
+      url: '/pages/library/library'
     });
   },
 
-  // 阻止事件冒泡
-  stopPropagation() {
-    // 空函数，用于阻止点击事件冒泡
+  // 查看学习路径
+  viewPath(e) {
+    const pathId = e.currentTarget.dataset.id;
+    wx.showToast({
+      title: '学习路径功能开发中',
+      icon: 'none'
+    });
+  },
+
+  // 分享
+  onShareAppMessage() {
+    return {
+      title: '汉克运营资料库',
+      path: '/pages/index/index',
+      imageUrl: '/images/share-index.jpg'
+    };
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '汉克运营资料库 - 专业的运营知识库',
+      query: '',
+      imageUrl: '/images/share-timeline.jpg'
+    };
   }
 });
